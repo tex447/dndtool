@@ -1,0 +1,333 @@
+@import 'sass/_normalize.scss';
+@import 'sass/_base.scss';
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    color: $text;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 3.998em;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 3.157em;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 50;
+}
+h4 {
+  font-size: 1.1em;
+  font-weight:10;
+}
+
+p {
+    font-size: 1em;
+}
+
+a {
+    color: $accent;
+}
+
+// input[type="text"],
+// input[type="email"],
+// input[type="password"] {
+//     padding: 10px 10px 7px;
+// }
+
+.panel-default > .panel-heading-custom {
+background: brown;
+border-color: black;
+ color: #fff; }
+
+ .panel-default {
+ background: $dgrey;
+ // background-image: url('/dndbillboard.png'), linear-gradient(#202023, #19283f);
+ border-color: black;
+  color: black; }
+
+.panel-default > .panel-heading {
+background: brown;
+  border-color: black;
+  color: black;
+}
+
+.panel-awesome {
+  background: $dgrey;
+  background-image: url('/playerdbbackground.png'), linear-gradient(#202023, #19283f);
+}
+
+.alignright {
+  max-resolution: 20px;
+}
+
+
+  .panel-custom {
+  width: 300;
+  background: gray;
+  border-color: black;
+   color: #fff; }
+
+.btn, button {
+    // background: $action;
+    text-decoration: none;
+    display: inline-block;
+    // font-weight: 400;
+    padding: 2px 5px 1px;
+    // color: #FFF;
+    // letter-spacing: 1px;
+    // border: solid 2px $action;
+    @include trans();
+    &:hover {
+        background: $action - 30;
+        border-color: $action - 30;
+    }
+}
+
+.item {
+  display: block;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  background-color: brown;
+  border: 1px solid black;
+  width: 300px;
+  cursor: move;
+}
+//
+// .btn-text {
+//     @extend .btn;
+//     background: transparent;
+// }
+//
+// .btn-primary {
+//     @extend .btn;
+//     background: $accent;
+//     border: solid 2px $accent;
+//     &:hover {
+//         background: $accent - 30;
+//         border-color: $accent - 30;
+//     }
+// }
+
+
+.header {
+    background: brown;
+    background-image: url('/D&D_Transparent.png'), linear-gradient(#202023, #19283f);
+    border-bottom: 2pxs solid $dgrey;
+    color: red;
+    position: relative;
+    z-index: 10;
+    height: 60px;
+    padding: 5px 5%;
+    display: flex;
+    justify-content: space-between;
+    @include card(1);
+    a {
+        color: red;
+    }
+    .site-title {
+        line-height: 3;
+        margin: 0;
+    }
+}
+
+.main-nav {
+    ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+    }
+    li + li {
+        margin-left: 20px;
+    }
+    a {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+    }
+}
+
+.login-toggle {
+    cursor: pointer;
+}
+
+
+// Homepage
+.billboard {
+    background-image: url('/dndbillboard.png'), linear-gradient(#202023, #19283f);
+    color: white;
+    text-align: left;
+    border-bottom: 2px solid $dgrey;
+    padding: 40px 5%;
+}
+
+.bgimg {
+  background-image: url('/D&D_Transparent.png');
+  padding: 400px;
+}
+.app-layout {
+    margin-left: 20px;
+    min-height: 25vh;
+    padding: 20px 30px;
+}
+
+.app-nav {
+    z-index: 9;
+    position: fixed;
+    width: 80px;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background: white;
+    overflow: hidden;
+    color: $text;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+    border-right: solid 1px $dgrey;
+    &:hover {
+        width: 300px;
+        a > span {
+            opacity: 1;
+            transform: translate3d(0, 0,0);
+        }
+    }
+    a {
+        width: 100%;
+        padding: 10px 25px;
+        color: $text;
+        display: block;
+        white-space: nowrap;
+        font-size: 1em;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+        i {
+            font-size: 2em;
+            margin-right: 20px;
+        }
+        > span {
+            transform: translate3d(20px, 0,0);
+            opacity: 0;
+            transition: background 0.3s ease;
+        }
+        &:hover {
+            color: #FFF;
+            border-color: $action;
+            background: $nav - 20;
+        }
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+}
+
+.page-title {
+    margin-top: 0;
+}
+
+table {
+    font-size: 0.9em;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.68, -0.65, 0.265, 1.20);
+    @include card(2);
+    tr:nth-child(even) {
+        background: #EEE
+    }
+    td, th {
+        text-align: left;
+        padding: 5px 2px;
+    }
+    th {
+        background: brown;
+        color: #fff;
+    }
+    &.edit-mode {
+        transform: translate3d(300px, 0, 0);
+    }
+}
+
+.user_id {
+    color: $blue;
+    cursor: pointer;
+}
+
+#trackerName {
+  font-family: Papyrus, fantasy;
+  font-size: 4em;
+}
+
+#insideContent{
+    display:inline-block;
+}
+
+.fixed-size-square {
+    display: table;
+    width: 100px;
+    height: 100px;
+    background: #4679BD;
+}
+.fixed-size-square span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white
+}
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-webkit-border-top-left-radius:15px;
+	-moz-border-radius-topleft:15px;
+	border-top-left-radius:15px;
+	-webkit-border-top-right-radius:15px;
+	-moz-border-radius-topright:15px;
+	border-top-right-radius:15px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:65px;
+	line-height:65px;
+	width:86px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}.myButton:active {
+	position:relative;
+	top:1px;
+}

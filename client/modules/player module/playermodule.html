@@ -1,0 +1,105 @@
+<template name="playermodule">
+  <div class="row">
+  <div class="panel panel-default">
+  <div class="panel-heading">{{charactername}}</div>
+  <div class="panel-body panel-awesome">
+<div class="col-xs-2">
+  <b>Level {{level}} {{dndclass}}</b><br />
+</div>
+<div class="col-xs-2">
+
+  {{alignment}}<br />
+  Pass Perc. {{passiveperception}}<br />
+  Hit Dice {{hitdice}}
+</div>
+<div class="col-xs-2">
+  <b>Hit Points</b> <br />  <button class="hitpointsup btn btn-success">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+      </button>
+      <b>{{hitpoints}}</b>
+    <button class="hitpointsdown btn btn-danger">
+  <span class="glyphicon glyphicon-minus-sign"></span>
+</button><br /><br />
+  <b>Armor Class</b><br />  <button class="armorclassup btn btn-success">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+      </button>
+      <b>{{armorclass}}</b>
+    <button class="armorclassdown btn btn-danger">
+  <span class="glyphicon glyphicon-minus-sign"></span>
+  </button>
+</div>
+<div class="col-xs-3">
+  <b>Death Saves</b><br />
+  Success: <br /><button class="hitpointsup btn btn-success">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+  </button>&nbsp;{{deathsavesucces}}   <button class="hitpointsdown btn btn-danger">
+  <span class="glyphicon glyphicon-minus-sign"></span>
+</button><br />
+  Failed:<br /> <button class="hitpointsup btn btn-success">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+  </button>&nbsp;{{deathsavefails}}   <button class="hitpointsdown btn btn-danger">
+  <span class="glyphicon glyphicon-minus-sign"></span>
+</button><br />
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-7">
+  {{> spelltracking}}
+    <!-- <div class="panel panel-default">
+    <div class="panel-heading">Spell Tracking - <i>the weave of magic</i></div>
+    <div class="panel-body">
+      {{#each matchy}}
+      Level 1:{{level1}}
+      {{/each}}
+      {{#each casterslots}}
+      <h4>You have&nbsp;<b>{{slots.cantrips}}</b> Cantrips</h4>
+      <h4>Level 1 Slots:
+        <button class="spelllevel1down btn btn-xs btn-danger">
+            <b>{{slots.spelllevel1}}</b>
+      <span class="glyphicon glyphicon-minus-sign"></span>
+      </button>
+      </h4>
+      <h4>Level 2 Slots:
+        <button class="spelllevel2down btn btn-xs btn-danger">
+          <b>{{slots.spelllevel2}}</b>
+      <span class="glyphicon glyphicon-minus-sign"></span>
+      </button>
+      </h4>
+      {{/each}}
+    </div>
+  </div> -->
+  </div>
+  <div class="col-sm-7">
+      <div class="panel panel-default">
+      <div class="panel-heading">Satchel Sack </div>
+      <div class="panel-body">
+        <h4>Potions: <button class="potionsup btn btn-success">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+        </button><b>&nbsp;{{potions}}&nbsp;</b><button class="potionsdown btn btn-danger">
+          <span class="glyphicon glyphicon-minus-sign"></span>
+        </button></h4>
+        <h4>Arrows: <button class="arrowsup btn btn-success">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+        </button><b>&nbsp;{{arrows}}&nbsp;</b><button class="arrowsdown btn btn-danger">
+          <span class="glyphicon glyphicon-minus-sign"></span>
+        </button></h4>
+        <h4>Rations: <button class="rationsup btn btn-success">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+        </button><b>&nbsp;{{rations}}&nbsp;</b><button class="rationsdown btn btn-danger">
+          <span class="glyphicon glyphicon-minus-sign"></span>
+        </button></h4>
+        <div class="form-group"><form>
+        <h4>Gold:{{gold}}</h4>
+        <input type="text" name="gold" placeholder="New Gold Value Here">
+<button type="submit" class="btn btn-success">Update</button></form>
+</div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    </div>
+</template>

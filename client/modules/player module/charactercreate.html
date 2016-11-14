@@ -1,0 +1,10 @@
+<template name="charactercreate">
+  {{> quickForm
+    id="createCharacterForm"
+    schema="CharacterSchema"
+    collection=formCollection
+    type="insert"
+    class="create-Character-Form"
+    omitFields="saves"}}
+    <a href="/dashboard">Back to Dashboard</a>
+</template>

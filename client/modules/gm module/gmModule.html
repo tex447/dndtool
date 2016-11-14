@@ -1,0 +1,31 @@
+<template name="gmmodule">
+  <h3>Character Details:</h3>
+    {{#each characters}}
+<div class="col-sm-6">
+<div class="panel panel-default">
+<div class="panel-heading"><b>{{charactername}}</b> <button class="btn btn-success">Level Up</button>
+<button class="btn btn-success longrest">Long Rest</button>
+</div>
+<div class="panel-body">
+<div class="col-sm-5">
+Level {{level}}<br /> <b>{{dndclass}}</b><br />
+{{alignment}}<br />
+Pass Percep: <b>{{passiveperception}}</b><br>
+Gold: {{gold}}
+</div>
+<div class="col-sm-6">
+<b>Hit Points:</b>
+    <b>{{hitpoints}}</b>
+<br>
+<b>Armor Class:</b>
+    <b>{{armorclass}}</b><br>
+    {{> spelltracking}}
+</div>
+
+
+</div>
+</div>
+</div>
+{{/each}}
+
+</template>

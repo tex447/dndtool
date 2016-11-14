@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://dndtool:calvin12@ds151927.mlab.com:51927/dndtool"
+    }
+  }
+}

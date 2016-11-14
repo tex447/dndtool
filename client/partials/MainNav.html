@@ -1,0 +1,13 @@
+<template name="MainNav">
+    <nav class="main-nav">
+        <ul>
+
+            {{#if currentUser}}
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li class="logout">Logout</li>
+            {{else}}
+            <li class="login-toggle">Login/Signup</li>
+            {{/if}}
+        </ul>
+    </nav>
+</template>

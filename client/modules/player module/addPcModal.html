@@ -1,0 +1,20 @@
+<template name="addPcModal">
+  <div class="addpc-modal {{$.Session.get 'addPcModal'}}">
+    <i class="fa fa-close close-charactercreate"></i>
+    {{#each grabcharacters}}
+    <h3>Insert Characters Initiative Roll</h3>
+    <form>
+
+<div class="form-group">
+    <b>{{charactername}}</b>
+  <input type="text" name="pcInitRoll" placeholder="Initiative Roll">
+  <input type="submit" value="Add Roll!!">
+  </div>
+
+
+</form>
+{{/each}}
+
+<button class="closeModal">CLOSE ME</button>
+</div>
+</template>

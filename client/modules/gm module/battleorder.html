@@ -1,0 +1,58 @@
+<template name="battleorder">
+<div class="row">
+    <div class="col-sm-6">
+  <h3>Initiative!</h3>
+
+  <p><button class="btn btn-primary addPcModal-toggle">Add Characters Rolls'</button></p>
+
+
+    <div id="items">
+      Highest Initiative....
+      {{#each items}}
+
+        <div class="item chooseNpcName">
+          <b>{{title}}</b> Health:&nbsp;
+  <button class="btn btn-success npcHealthUp"><span class="glyphicon glyphicon-plus"></span></button>
+          {{health}}
+          <button class="btn btn-danger npcHealthDown"><span class="glyphicon glyphicon-minus"></span></button>
+
+          <Button class="btn btn-danger killNpc alignright"><span class="glyphicon glyphicon-off killNpc"></span>
+          </Button>
+
+        </div>
+      {{/each}}
+      Lowest Initiative....
+    </div>
+</div>
+
+<div class="col-sm-2">
+  <img src="cooldiceguy.png" alt="" height="250" width="250">
+</div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-md-*">
+  <div class="panel panel-default">
+  <div class="panel-heading panel-heading-custom"><b>NPC Submit</b> </div>
+  <div class="panel-body">
+<form name="addNpc">
+  <div class="form-group">
+    <label for="npcName">NPC Name</label>
+  <input type="text" class="form-control" name="npcName" placeholder="NPC Name">
+  </div>
+  <div class="form-group">
+    <label for="npcName">NPC Health</label>
+  <input type=number class="form-control" name="npcHealth" placeholder="NPC Health">
+</div>
+  <div class="form-group">
+    <label for="npcName">NPC Initiative</label>
+  <input type="text" class="form-control" name="npcDexterity" placeholder="NPC Initiative">
+  <br><input type="submit" class="btn" value="Add NPC">
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</template>
