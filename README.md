@@ -10,73 +10,73 @@ Flowrouter for routing<br><br>
 
 Documentation to come!<br>
 
-File Structure
+File Structure<br><br>
 
-/client
--/accounts
---accounts.js
---LoginModal.html
---overrid-atPwdFormBTN.html
---override-atPwdFormBtn.js
+/client<br>
+-/accounts<br>
+--accounts.js<br>
+--LoginModal.html<br>
+--overrid-atPwdFormBTN.html<br>
+--override-atPwdFormBtn.js<br><br>
 
--/layouts
---AppLayout.html
---HomeLayout.html
---MainLayout.html
+-/layouts<br>
+--AppLayout.html<br>
+--HomeLayout.html<br>
+--MainLayout.html<br><br>
 
--/modules
---/dm module
----battleorder.html
----battleorder.js
----gmModule.html
----gmModule.js
+-/modules<br>
+--/dm module<br>
+---battleorder.html<br>
+---battleorder.js<br>
+---gmModule.html<br>
+---gmModule.js<br><br>
 
---/player module
----addPcModal.html
----addPcModal.js
----charactercreate.html
----charactercreate.js
----playermodule.html
----playermodule.js
+--/player module<br>
+---addPcModal.html<br>
+---addPcModal.js<br>
+---charactercreate.html<br>
+---charactercreate.js<br>
+---playermodule.html<br>
+---playermodule.js<br><br>
 
---/spelltracking
----spelltracking.html
----spelltracking.js
+--/spelltracking<br>
+---spelltracking.html<br>
+---spelltracking.js<br><br>
 
--/pages
---Dashboard.html
---Dashboard.js
---Home.html
+-/pages<br>
+--Dashboard.html<br>
+--Dashboard.js<br>
+--Home.html<br><br>
 
--/partials
---Header.html
---MainNav.html
---MainNav.js
+-/partials<br>
+--Header.html<br>
+--MainNav.html<br>
+--MainNav.js<br><br>
 
-/collections
--barbarianslots.js
--battleorder.js
--casterslots.js
--Characters.js
--clericslots.js
--monstermanual.js
--rangerslots.js
--sorcererslots.js
--wizardslots.js
+/collections<br>
+-barbarianslots.js<br>
+-battleorder.js<br>
+-casterslots.js<br>
+-Characters.js<br>
+-clericslots.js<br>
+-monstermanual.js<br>
+-rangerslots.js<br>
+-sorcererslots.js<br>
+-wizardslots.js<br><br>
 
-/public
-/sass
-/server
--accounts.js
--fixtures.js
--methods.js
--publish.js
+/public<br>
+/sass<br>
+/server<br>
+-accounts.js<br>
+-fixtures.js<br>
+-methods.js<br>
+-publish.js<br><br>
 
-"In bottom directory"
-routes.js
-index.html
-settings.json
-style.scss
+"In bottom directory"<br>
+routes.js<br>
+index.html<br>
+settings.json<br>
+style.scss<br>
 
 
 
