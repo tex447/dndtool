@@ -14,22 +14,21 @@ File Structure<br><br>
 
 /client<br>
 -/accounts<br>
---accounts.js<br>
---LoginModal.html<br>
---overrid-atPwdFormBTN.html<br>
+--accounts.js - Customizes Accounts package with dndtool specific options<br>
+--LoginModal.html - Template for the Login Modal<br>
+--override-atPwdFormBTN.html <br>
 --override-atPwdFormBtn.js<br><br>
 
 -/layouts<br>
---AppLayout.html<br>
---HomeLayout.html<br>
---MainLayout.html<br><br>
+--AppLayout.html - Simple app layout with the dynamic template<br>
+--HomeLayout.html - Layout for the "home" page or front page prior to login<br><br>
 
 -/modules<br>
 --/dm module<br>
----battleorder.html<br>
----battleorder.js<br>
----gmModule.html<br>
----gmModule.js<br><br>
+---battleorder.html - Battleorder template used by DM, only contains the code for the Initiative list and monster manual<br>
+---battleorder.js - JS File for the battleorder template<br>
+---gmModule.html - Template for the DM's homepage<br>
+---gmModule.js - Associated JS file for DM's homepage template<br><br> -
 
 --/player module<br>
 ---addPcModal.html<br>
@@ -54,15 +53,15 @@ File Structure<br><br>
 --MainNav.js<br><br>
 
 /collections<br>
--barbarianslots.js<br>
--battleorder.js<br>
--casterslots.js<br>
--Characters.js<br>
--clericslots.js<br>
--monstermanual.js<br>
--rangerslots.js<br>
--sorcererslots.js<br>
--wizardslots.js<br><br>
+-barbarianslots.js - Creates Barbarian Slots collection<br>
+-battleorder.js- Creates Battleorder collection<br>
+-casterslots.js- Creates Caster Slots collection<br>
+-Characters.js- Creates Characters collection<br>
+-clericslots.js- Creates Cleric Slots collection<br>
+-monstermanual.js- Creates monstermanual collection<br>
+-rangerslots.js- Creates Ranger Slots collection<br>
+-sorcererslots.js- Creates Sorcerer Slots collection<br>
+-wizardslots.js- Creates Wizard Slots collection<br><br>
 
 /public<br>
 /sass<br>
