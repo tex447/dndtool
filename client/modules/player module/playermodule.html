@@ -1,7 +1,7 @@
 <template name="playermodule">
   <div class="row">
   <div class="panel panel-default">
-  <div class="panel-heading">{{charactername}}</div>
+  <div class="panel-heading">{{charactername}} </div>
   <div class="panel-body panel-awesome">
 <div class="col-xs-2">
   <b>Level {{level}} {{dndclass}}</b><br />
@@ -30,14 +30,14 @@
 </div>
 <div class="col-xs-3">
   <b>Death Saves</b><br />
-  Success: <br /><button class="hitpointsup btn btn-success">
+  Success: <br /><button class="deathsuccessup btn btn-success">
     <span class="glyphicon glyphicon-plus-sign"></span>
-  </button>&nbsp;{{deathsavesucces}}   <button class="hitpointsdown btn btn-danger">
+  </button>&nbsp;{{deathsavesucces}}   <button class="deathsuccessdown btn btn-danger">
   <span class="glyphicon glyphicon-minus-sign"></span>
 </button><br />
-  Failed:<br /> <button class="hitpointsup btn btn-success">
+  Failed:<br /> <button class="deathfailup btn btn-success">
     <span class="glyphicon glyphicon-plus-sign"></span>
-  </button>&nbsp;{{deathsavefails}}   <button class="hitpointsdown btn btn-danger">
+  </button>&nbsp;{{deathsavefails}}   <button class="deathfaildown btn btn-danger">
   <span class="glyphicon glyphicon-minus-sign"></span>
 </button><br />
 </div>

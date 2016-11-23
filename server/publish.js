@@ -14,6 +14,17 @@ Meteor.publish('characters', function(){
 }
 });
 
+Meteor.publish('barbarianslots', function(){
+ return Barbarianslots.find();
+});
+
+Meteor.publish('monstermanual', function(){
+ var currentUserId = this.userId;
+ if(Roles.userIsInRole(this.userId, 'gamemaster')) {
+ return Monstermanual.find();
+}
+});
+
 Meteor.publish('wizardslots', function(){
   // var currentUserId = this.userId;
   // if(Roles.userIsInRole(this.userId, 'gamemaster' || 'player')) {

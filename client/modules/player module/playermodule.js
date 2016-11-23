@@ -17,7 +17,12 @@ Tracker.autorun(function(){
     let clericStats = Clericslots.find().fetch();
     Session.set("clericstats", clericStats);
   });
+  Meteor.subscribe('barbarianslots', function(){
+    let barbarianStats = Barbarianslots.find().fetch();
+    Session.set("barbarianstats", barbarianStats);
+  });
 });
+
 Template.Dashboard.onCreated(function() {
     Meteor.subscribe('casterslots');
 });
@@ -171,6 +176,18 @@ Template.playermodule.events({
       default:
         console.log("Sorry NO class selected");
       };
+    },
+    'click .deathsuccessup'(event) {
+      Meteor.call("deathsuccessup", this._id);
+    },
+    'click .deathsuccessdown'(event) {
+      Meteor.call("deathsuccessdown", this._id);
+    },
+    'click .deathfailup'(event) {
+      Meteor.call("deathfailup", this._id);
+    },
+    'click .deathfaildown'(event) {
+      Meteor.call("deathfaildown", this._id);
     },
     // 'click .spelllevel1down'(event) {
     //   let casterslotId = this._id;

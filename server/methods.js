@@ -49,6 +49,40 @@ Meteor.methods({
       $inc: {'armorclass': -1}
     });
   },
+  deathsuccessup(id) {
+    Characters.update(id, {
+      $inc: {'deathsavesucces': 1}
+    });
+  },
+  deathsuccessdown(id) {
+    Characters.update(id, {
+      $inc: {'deathsavesucces': -1}
+    });
+  },
+  deathfailup(id) {
+    Characters.update(id, {
+      $inc: {'deathsavefails': 1}
+    });
+  },
+  deathfaildown(id) {
+    Characters.update(id, {
+      $inc: {'deathsavefails': -1}
+    });
+  },
+  ragesdown(id, playerLevel) {
+    switch (playerLevel) {
+      case 1:
+      Casterslots.update({_id: id,'slots.level': 1},{$inc:{'slots.$.rages': -1}});
+      case 2:
+      Casterslots.update({_id: id,'slots.level': 2},{$inc:{'slots.$.rages': -1}});
+      case 3:
+      Casterslots.update({_id: id,'slots.level': 3},{$inc:{'slots.$.rages': -1}});
+      case 4:
+      Casterslots.update({_id: id,'slots.level': 4},{$inc:{'slots.$.rages': -1}});
+      case 5:
+      Casterslots.update({_id: id,'slots.level': 5},{$inc:{'slots.$.rages': -1}});
+    };
+  },
   spelllevel1down(id, playerLevel) {
     switch (playerLevel) {
       case 1:
@@ -125,11 +159,26 @@ writeRangerStats(rangerStats, userId, characterId) {
 updateRangerStats(rangerStats, characterId) {
     Casterslots.update({character: characterId}, {$set: {slots: rangerStats}});
   },
-addNpcToBattleOrder(npcName, npcHealth, npcDexterity) {
+writeBarbarianStats(barbarianStats, userId, characterId) {
+    if (typeof Casterslots.findOne({character: characterId}) !== 'object') {
+      Casterslots.insert({
+          player: userId,
+          character: characterId,
+          slots: barbarianStats,
+        });
+    }
+},
+updateBarbarianStats(barbarianStats, characterId) {
+    Casterslots.update({character: characterId}, {$set: {slots: barbarianStats}});
+},
+addNpcToBattleOrder(npcName, npcHealth, npcArmorClass) {
+var droll = require('droll');
+var npcDexterity = droll.roll('1d20');
   Battleorder.insert({
-    title: npcName,
-    rank: npcDexterity,
+    name: npcName,
+    rank: npcDexterity.total,
     health: parseInt(npcHealth),
+    ac: parseInt(npcArmorClass),
   });
 },
 whoToKill(whoToKill) {
@@ -143,7 +192,7 @@ npcHealthDown(id) {
 },
 addPcInitRolls(playerName, initRoll) {
   Battleorder.insert({
-    title: playerName,
+    name: playerName,
     rank: initRoll,
   });
 },
@@ -154,5 +203,8 @@ updategold(id, newGold) {
   Characters.update({_id: id},
     {$set: {gold: newGold}});
 },
+levelUp(characterId) {
+  Characters.update({_id: characterId}, {$inc: {'level': 1}});
+}
 
 });

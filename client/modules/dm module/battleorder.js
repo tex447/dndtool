@@ -1,5 +1,6 @@
 Template.Dashboard.onCreated(function() {
     Meteor.subscribe('battleorder');
+    Meteor.subscribe('monstermanual');
 });
 
 Template.battleorder.events({
@@ -7,11 +8,9 @@ Template.battleorder.events({
   event.preventDefault();
   var npcName = event.target.npcName.value;
   var npcHealth = event.target.npcHealth.value;
-  var npcDexterity = event.target.npcDexterity.value;
   Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcDexterity)
     event.target.npcName.value = "";
     event.target.npcHealth.value = "";
-    event.target.npcDexterity.value = "";
 },
 'click .killNpc'(event) {
 Meteor.call('whoToKill', this._id);
@@ -21,6 +20,17 @@ Meteor.call('whoToKill', this._id);
 },
 'click .npcHealthUp'(event) {
   Meteor.call('npcHealthUp', this._id);
+},
+'click .monsterselection'(event) {
+  var selectedMonster = this._id;
+  Session.set("selectedMonster", selectedMonster);
+},
+'click .submitFromMonsterManual'(event) {
+var monsterToAdd = Session.get("selectedMonster");
+var npcName = Monstermanual.findOne({_id: monsterToAdd}, {fields: {name: 1}}).name;
+var npcHealth = Monstermanual.findOne({_id: monsterToAdd}, {fields: {health: 1}}).health;
+var npcArmorClass = Monstermanual.findOne({_id: monsterToAdd}, {fields: {ac: 1}}).ac;
+Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcArmorClass);
 },
 // 'click .loadPc'(event) {
 // let characters = Characters.find({},{fields:{charactername:1}}).map(({charactername})=>charactername);
@@ -39,6 +49,13 @@ Template.battleorder.helpers({
   items: function() {
       return Battleorder.find({}, {sort: {rank: -1}});
     },
+monsterManualList() {
+  return Monstermanual.find();
+},
+
+
+
+
 });
 Template.battleorder.rendered = function() {
     this.$('#items').sortable({

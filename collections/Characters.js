@@ -20,6 +20,7 @@ CharacterSchema = new SimpleSchema({
   },
   level: {
     type: Number,
+    min:0,
     label: "Level"
   },
   dndclass: {
@@ -34,10 +35,12 @@ CharacterSchema = new SimpleSchema({
   },
   hitpoints: {
     type: Number,
+    min:0,
     label: "Hit Points"
   },
   armorclass: {
     type: Number,
+    min:0,
     label: "Armor Class"
   },
   hitdice: {
@@ -47,36 +50,46 @@ CharacterSchema = new SimpleSchema({
   },
   dexterity: {
     type: Number,
+    min: 0,
     label: "Dexterity"
   },
   gold: {
     type: Number,
+    min:0,
     label: "Gold"
   },
   arrows: {
     type: Number,
+    min: 0,
     label: "Arrows"
   },
   potions: {
     type: Number,
+    min: 0,
     label: "Potions"
   },
   rations: {
     type: Number,
+    min: 0,
     label: "Rations"
   },
   passiveperception: {
     type: Number,
+    min: 0,
     label: "Passive Perception"
   },
   deathsavesucces: {
     type: Number,
+    min: 0,
+    max: 3,
     autoform: {type: "hidden",
     label:false},
     defaultValue: 0
   },
   deathsavefails: {
     type: Number,
+    min: 0,
+    max: 0,
     autoform: {type: "hidden",
   label:false},
   defaultValue: 0

@@ -1,0 +1,13 @@
+notes
+
+/client
+-/accounts
+--accounts.js
+--LoginModal.html
+--overrid-atPwdFormBTN.html
+--override-atPwdFormBtn.js
+-/layouts
+-/modules
+--/dm module
+--/player module
+--/spelltracking

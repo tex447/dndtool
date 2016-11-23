@@ -22,6 +22,10 @@ Tracker.autorun(function(){
     let rangerStats = Rangerslots.find().fetch();
     Session.set("rangerstats", rangerStats);
   });
+  Meteor.subscribe('barbarianslots', function(){
+    let barbarianStats = Barbarianslots.find().fetch();
+    Session.set("barbarianstats", barbarianStats);
+  });
 });
 
 Template.spelltracking.events({
@@ -60,6 +64,24 @@ Template.spelltracking.events({
           }
       }).level;
       Meteor.call('spelllevel2down', this._id, playerLevel);
+  },
+  'click .ragesdown' (event) {
+      let casterslotId = this._id;
+      let characterId = Casterslots.findOne({
+          _id: casterslotId
+      }, {
+          fields: {
+              character: 1
+          }
+      }).character;
+      let playerLevel = Characters.findOne({
+          _id: characterId
+      }, {
+          fields: {
+              level: 1
+          }
+      }).level;
+      Meteor.call('ragesdown', this._id, playerLevel);
   },
 });
 
@@ -157,8 +179,6 @@ Template.spelltracking.helpers({
         //Determines based off the players class what stats to write into their charctersheet
         switch (playerClass) {
             case "Wizard":
-                // let wizardStats = Wizardslots.find().fetch();
-                // console.log(wizardStats);
                 var wizardStats = Session.get("wizardstats");
                 Meteor.call("writeWizardStats", wizardStats, userId, characterId);
                 break;
@@ -175,6 +195,8 @@ Template.spelltracking.helpers({
             Meteor.call("writeRangerStats", rangerStats, userId, characterId);
                 break;
             case "Barbarian":
+            var barbarianStats = Session.get("barbarianstats");
+            Meteor.call("writeBarbarianStats", barbarianStats, userId, characterId);
                 break;
             case "Warlock":
                 break;

@@ -118,6 +118,62 @@ Meteor.startup(() => {
       spelllevel3:0});
     }
 });
+
+Meteor.startup(() => {
+  const count = Monstermanual.find().count();
+  if (count === 0) {
+    Monstermanual.insert({
+      name: "Skeleton",
+      health: 13,
+      ac: 13}),
+      Monstermanual.insert({
+        name: "Goblin",
+        health: 7,
+        ac: 15}),
+        Monstermanual.insert({
+          name: "Goblin Leader",
+          health: 18,
+          ac: 14}),
+      Monstermanual.insert({
+        name: "Orc",
+        health: 15,
+        ac: 13}),
+        Monstermanual.insert({
+          name: "Orc War Chief",
+          health: 93,
+          ac: 16}),
+          Monstermanual.insert({
+            name: "Orc Leader",
+            health: 32,
+            ac: 16}),
+      Monstermanual.insert({
+        name: "Troll",
+        health: 84,
+        ac: 15});
+    }
+});
+
+Meteor.startup(() => {
+  const count = Barbarianslots.find().count();
+  if (count === 0) {
+    Barbarianslots.insert({
+      level: 1,
+      rages: 2}),
+  Barbarianslots.insert({
+    level: 2,
+    rages: 2}),
+  Barbarianslots.insert({
+    level: 3,
+    rages: 3}),
+  Barbarianslots.insert({
+    level: 4,
+    rages: 3}),
+  Barbarianslots.insert({
+      level: 5,
+      rages: 3});
+    }
+});
+
 // Meteor.startup(() => {
 // if(Battleorder.find({}).count() == 0) {
 //       for(var i = 1; i <= 10; i++) {

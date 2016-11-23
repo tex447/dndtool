@@ -1,17 +1,20 @@
 <template name="gmmodule">
   <h3>Character Details:</h3>
     {{#each characters}}
-<div class="col-sm-6">
+
 <div class="panel panel-default">
-<div class="panel-heading"><b>{{charactername}}</b> <button class="btn btn-success">Level Up</button>
+<div class="panel-heading"><b>{{charactername}}</b>
+  Level {{level}} <b>{{dndclass}}</b>
+  <button class="btn btn-success levelUp">Level Up</button>
 <button class="btn btn-success longrest">Long Rest</button>
 </div>
 <div class="panel-body">
 <div class="col-sm-5">
-Level {{level}}<br /> <b>{{dndclass}}</b><br />
 {{alignment}}<br />
 Pass Percep: <b>{{passiveperception}}</b><br>
-Gold: {{gold}}
+Gold: {{gold}} <br>
+DSave Suc {{deathsavesucces}} <br>
+DSave Fail {{deathsavefails}}
 </div>
 <div class="col-sm-6">
 <b>Hit Points:</b>
@@ -25,7 +28,7 @@ Gold: {{gold}}
 
 </div>
 </div>
-</div>
+
 {{/each}}
 
 </template>
