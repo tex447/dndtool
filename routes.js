@@ -13,6 +13,12 @@ FlowRouter.route('/dashboard', {
         BlazeLayout.render("AppLayout", {main: "Dashboard"});
     }
 });
+FlowRouter.route('/monstermanual', {
+    name: 'monstermanual',
+    action() {
+        BlazeLayout.render("AppLayout", {main: "monstermanual"});
+    }
+});
 FlowRouter.route('/charctercreate', {
     name: 'charactercreate',
     action() {

@@ -18,10 +18,6 @@ Template.gmmodule.helpers({
 });
 
 Template.gmmodule.events({
-  'click .levelUp'(event) {
-    let characterId = this._id;
-    Meteor.call("levelUp", characterId);
-  },
   'click .killPc'(event) {
   Meteor.call('killPc', this._id);
   },
@@ -48,7 +44,6 @@ Template.gmmodule.events({
       break;
       case "Barbarian":
           var barbarianStats = Session.get("barbarianstats");
-          console.log(barbarianStats);
           Meteor.call("updateBarbarianStats", barbarianStats, characterId);
       break;
       case "Warlock":

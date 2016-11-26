@@ -1,11 +1,11 @@
 <template name="gmmodule">
+  <h3><a href="/monstermanual">Monster Manual</a></h3>
   <h3>Character Details:</h3>
     {{#each characters}}
 
 <div class="panel panel-default">
 <div class="panel-heading"><b>{{charactername}}</b>
   Level {{level}} <b>{{dndclass}}</b>
-  <button class="btn btn-success levelUp">Level Up</button>
 <button class="btn btn-success longrest">Long Rest</button>
 </div>
 <div class="panel-body">

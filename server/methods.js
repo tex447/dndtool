@@ -193,11 +193,14 @@ npcHealthDown(id) {
 addPcInitRolls(playerName, initRoll) {
   Battleorder.insert({
     name: playerName,
-    rank: initRoll,
+    rank: parseInt(initRoll),
   });
 },
 killPc(id) {
   Characters.remove({_id: id});
+},
+removeMonsterFromManual(monsterToRemove) {
+  Monstermanual.remove({_id:monsterToRemove});
 },
 updategold(id, newGold) {
   Characters.update({_id: id},
@@ -205,6 +208,13 @@ updategold(id, newGold) {
 },
 levelUp(characterId) {
   Characters.update({_id: characterId}, {$inc: {'level': 1}});
-}
+},
+addToMonsterManual(npcName, npcHealth, npcAc) {
+  Monstermanual.insert({
+    name: npcName,
+    health: parseInt(npcHealth),
+    ac: parseInt(npcAc),
+  });
+},
 
 });

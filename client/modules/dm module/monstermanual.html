@@ -1,0 +1,41 @@
+<template name="monstermanual">
+  <div class="row">
+    <div class="col-md-*">
+    <div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom"><b>Monster Manual</b> </div>
+    <div class="panel-body">
+  <form name="addNpc">
+    <div class="form-group">
+      <label for="npcName">Monster Name</label>
+    <input type="text" class="form-control" name="npcName" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="npcName">Monster Health</label>
+    <input type=number class="form-control" name="npcHealth" placeholder="Health">
+  </div>
+  <div class="form-group">
+    <label for="npcName">Monster AC</label>
+  <input type=number class="form-control" name="npcAc" placeholder="Armor Class">
+</div>
+    <div class="form-group">
+      <input type="submit" class="btn" value="Add Monster">
+    </div>
+    </form>
+      <form name="monstermanual">
+        <div class="form-group">
+    <b>Monster Manual:</b>
+  <select multiple class="form-control">
+    {{#each monsterManualList}}
+    <option class="monsterselection"><b>{{name}}</b> HP:{{health}} AC:{{ac}}</option>
+    {{/each}}
+  </select><br>
+  </div>
+  </form>
+    <button class="btn btn-primary removeMonsterFromManual">Remove Monster</button>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+</template>

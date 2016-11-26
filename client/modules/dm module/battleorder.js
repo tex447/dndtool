@@ -46,16 +46,12 @@ Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcArmorClass);
 // },
 });
 Template.battleorder.helpers({
-  items: function() {
+items: function() {
       return Battleorder.find({}, {sort: {rank: -1}});
-    },
+},
 monsterManualList() {
   return Monstermanual.find();
 },
-
-
-
-
 });
 Template.battleorder.rendered = function() {
     this.$('#items').sortable({
