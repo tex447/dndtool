@@ -11,7 +11,7 @@
       {{#each items}}
 
         <div class="item chooseNpcName">
-          <b>{{name}}</b> Health:&nbsp;
+          <b>{{name}}</b> HP:&nbsp;
   <button class="btn btn-success npcHealthUp"><span class="glyphicon glyphicon-plus"></span></button>
           {{health}}
           <button class="btn btn-danger npcHealthDown"><span class="glyphicon glyphicon-minus"></span></button>
@@ -57,7 +57,16 @@
   <option class="monsterselection"><b>{{name}}</b> HP:{{health}} AC:{{ac}}</option>
   {{/each}}
 </select><br>
-<button class="btn btn-danger submitFromMonsterManual">Add Monster</button>
+
+Quantity:<select name="monsterQuantity" id="monsterQuantity" class="form-control input-sm">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select><br>
+<button class="btn btn-danger submitFromMonsterManual">Add Monster</button><br>
 </div>
 </form>
 </div>

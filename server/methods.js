@@ -171,16 +171,39 @@ writeBarbarianStats(barbarianStats, userId, characterId) {
 updateBarbarianStats(barbarianStats, characterId) {
     Casterslots.update({character: characterId}, {$set: {slots: barbarianStats}});
 },
-addNpcToBattleOrder(npcName, npcHealth, npcArmorClass) {
-var droll = require('droll');
-var npcDexterity = droll.roll('1d20');
+addNpcToBattleOrder(npcName, npcHealth, npcArmorClass, monsterQuantity) {
+var number = parseInt(monsterQuantity);
+i = 1;
+if (number == 1) {
+  var droll = require('droll');
+  var npcDexterity = droll.roll('1d20');
   Battleorder.insert({
     name: npcName,
     rank: npcDexterity.total,
     health: parseInt(npcHealth),
     ac: parseInt(npcArmorClass),
+  })
+} else {
+  while (i < number + 1) {
+    var droll = require('droll');
+    var npcDexterity = droll.roll('1d20');
+  Battleorder.insert({
+    name: npcName + i,
+    rank: npcDexterity.total,
+    health: parseInt(npcHealth),
+    ac: parseInt(npcArmorClass),
+  });
+  i++;
+  }
+}
+},
+addItemToSatchel(item, characterId) {
+  Characteritems.insert({
+    character: characterId,
+    item: item,
   });
 },
+
 whoToKill(whoToKill) {
   Battleorder.remove({_id:whoToKill});
 },
@@ -216,5 +239,7 @@ addToMonsterManual(npcName, npcHealth, npcAc) {
     ac: parseInt(npcAc),
   });
 },
-
+removeItem(itemIdToRemove) {
+  Characteritems.remove({_id:itemIdToRemove});
+},
 });

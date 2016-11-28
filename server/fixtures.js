@@ -137,19 +137,7 @@ Meteor.startup(() => {
       Monstermanual.insert({
         name: "Orc",
         health: 15,
-        ac: 13}),
-        Monstermanual.insert({
-          name: "Orc War Chief",
-          health: 93,
-          ac: 16}),
-          Monstermanual.insert({
-            name: "Orc Leader",
-            health: 32,
-            ac: 16}),
-      Monstermanual.insert({
-        name: "Troll",
-        health: 84,
-        ac: 15});
+        ac: 13});
     }
 });
 

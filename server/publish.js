@@ -26,10 +26,11 @@ Meteor.publish('monstermanual', function(){
 });
 
 Meteor.publish('wizardslots', function(){
-  // var currentUserId = this.userId;
-  // if(Roles.userIsInRole(this.userId, 'gamemaster' || 'player')) {
   return Wizardslots.find({});
-// }
+});
+
+Meteor.publish('characteritems', function(){
+  return Characteritems.find({});
 });
 
 Meteor.publish('sorcererslots', function(){

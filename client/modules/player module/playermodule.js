@@ -24,10 +24,15 @@ Template.Dashboard.onCreated(function() {
 });
 Template.playermodule.onCreated(function(){
   Meteor.subscribe('casterslots');
+  Meteor.subscribe('characteritems');
 });
 Template.playermodule.helpers({
   wizardslots() {
     return Wizardslots.find();
+  },
+  characteritems() {
+    let characterId = this._id;
+    return Characteritems.find({character: characterId});
   },
   casterslots() {
     let characterId = (this._id);
@@ -104,5 +109,19 @@ Template.playermodule.events({
     'click .levelUp'(event) {
       let characterId = this._id;
       Meteor.call("levelUp", characterId);
+    },
+    'click .addItemToSatchel'(event) {
+      let item = document.getElementById('itemToAddToSatchel').value;
+      let characterId = this._id;
+      Meteor.call("addItemToSatchel", item, characterId);
+      document.getElementById("itemToAddToSatchel").value = "";
+    },
+    'click .removeItem'(event) {
+      let itemIdToRemove = Session.get("selecteditem");
+      Meteor.call("removeItem", itemIdToRemove)
+    },
+    'click .itemselection'(event) {
+      var selectedItem = this._id;
+      Session.set("selecteditem", selectedItem);
     },
 });

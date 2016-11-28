@@ -30,7 +30,8 @@ var monsterToAdd = Session.get("selectedMonster");
 var npcName = Monstermanual.findOne({_id: monsterToAdd}, {fields: {name: 1}}).name;
 var npcHealth = Monstermanual.findOne({_id: monsterToAdd}, {fields: {health: 1}}).health;
 var npcArmorClass = Monstermanual.findOne({_id: monsterToAdd}, {fields: {ac: 1}}).ac;
-Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcArmorClass);
+var monsterQuantity = document.getElementById('monsterQuantity').value;
+Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcArmorClass, monsterQuantity);
 },
 // 'click .loadPc'(event) {
 // let characters = Characters.find({},{fields:{charactername:1}}).map(({charactername})=>charactername);

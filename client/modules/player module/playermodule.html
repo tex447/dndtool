@@ -45,33 +45,10 @@
 </div>
 </div>
 <div class="row">
-<div class="col-sm-7">
+<div class="col-sm-5">
   {{> spelltracking}}
-    <!-- <div class="panel panel-default">
-    <div class="panel-heading">Spell Tracking - <i>the weave of magic</i></div>
-    <div class="panel-body">
-      {{#each matchy}}
-      Level 1:{{level1}}
-      {{/each}}
-      {{#each casterslots}}
-      <h4>You have&nbsp;<b>{{slots.cantrips}}</b> Cantrips</h4>
-      <h4>Level 1 Slots:
-        <button class="spelllevel1down btn btn-xs btn-danger">
-            <b>{{slots.spelllevel1}}</b>
-      <span class="glyphicon glyphicon-minus-sign"></span>
-      </button>
-      </h4>
-      <h4>Level 2 Slots:
-        <button class="spelllevel2down btn btn-xs btn-danger">
-          <b>{{slots.spelllevel2}}</b>
-      <span class="glyphicon glyphicon-minus-sign"></span>
-      </button>
-      </h4>
-      {{/each}}
-    </div>
-  </div> -->
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-5">
       <div class="panel panel-default">
       <div class="panel-heading">Satchel Sack </div>
       <div class="panel-body">
@@ -93,7 +70,15 @@
         <div class="form-group"><form>
         <h4>Gold:{{gold}}</h4>
         <input type="text" name="gold" placeholder="New Gold Value Here">
-<button type="submit" class="btn btn-success">Update</button></form>
+<button type="submit" class="btn btn-success">Update</button></form><br>
+
+<select multiple class="form-control">
+{{#each characteritems}}
+  <option class="itemselection">{{item}}</option>
+{{/each}}
+</select><br>
+<input type="text" id="itemToAddToSatchel" placeholder="What do you want to add?"><button class="btn btn-primary addItemToSatchel">Add to Satchel</button>
+<button class="btn btn-danger removeItem">Remove Item</button>
 </div>
 
       </div>
