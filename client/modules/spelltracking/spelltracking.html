@@ -1,13 +1,13 @@
 <template name="spelltracking">
   {{#if isInRole 'player'}}
-<div class="panel panel-default">
+<!-- <div class="panel panel-default">
 <div class="panel-heading"><span class="glyphicon glyphicon-book"></span>&nbsp;Spell Tracking - <i>the weave of magic</i></div>
-<div class="panel-body">
+<div class="panel-body"> -->
   {{#each matchy}}
   Level 1:{{level1}}
   {{/each}}
   {{#each casterslots}}
-  <h4>You have&nbsp;<b>{{slots.cantrips}}</b> Cantrips</h4>
+  Cantrips<b> {{slots.cantrips}}</b><br>
   Rages:   <button class="ragesdown btn btn-xs btn-danger">{{slots.rages}}
     <span class="glyphicon glyphicon-minus-sign"></span>
   </button><br>
@@ -22,8 +22,8 @@ Level 2 Slots:
   <span class="glyphicon glyphicon-minus-sign"></span>
   </button>
   {{/each}}
-</div>
-</div>
+<!-- </div>
+</div> -->
 {{/if}}
 {{#if isInRole 'gamemaster'}}
   {{#each matchy}}

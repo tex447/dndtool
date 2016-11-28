@@ -25,6 +25,12 @@ FlowRouter.route('/charctercreate', {
         BlazeLayout.render("AppLayout", {main: "charactercreate"});
     }
 });
+FlowRouter.route('/localhistory', {
+    name: 'localhistory',
+    action() {
+        BlazeLayout.render("AppLayout", {main: "history"});
+    }
+});
 
 var adminRoutes = FlowRouter.group({
   prefix: '/admin',

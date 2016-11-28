@@ -32,7 +32,9 @@ Meteor.publish('wizardslots', function(){
 Meteor.publish('characteritems', function(){
   return Characteritems.find({});
 });
-
+Meteor.publish('characternotes', function(){
+  return Characternotes.find({});
+});
 Meteor.publish('sorcererslots', function(){
   // var currentUserId = this.userId;
   // if(Roles.userIsInRole(this.userId, 'gamemaster' || 'player')) {

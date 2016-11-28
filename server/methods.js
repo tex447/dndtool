@@ -203,7 +203,6 @@ addItemToSatchel(item, characterId) {
     item: item,
   });
 },
-
 whoToKill(whoToKill) {
   Battleorder.remove({_id:whoToKill});
 },
@@ -241,5 +240,16 @@ addToMonsterManual(npcName, npcHealth, npcAc) {
 },
 removeItem(itemIdToRemove) {
   Characteritems.remove({_id:itemIdToRemove});
+},
+updateCharacterNotes(note, noteId) {
+  Characternotes.update({_id: noteId}, {$set: {'note': note}});
+},
+setupNotes(characterId) {
+  if (typeof Characternotes.findOne({character: characterId}) !== 'object') {
+    Characternotes.insert({
+        character: characterId,
+        note: "Beware of the one they call Sowa",
+      });
+  }
 },
 });

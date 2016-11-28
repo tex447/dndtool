@@ -25,10 +25,16 @@ Template.Dashboard.onCreated(function() {
 Template.playermodule.onCreated(function(){
   Meteor.subscribe('casterslots');
   Meteor.subscribe('characteritems');
+  Meteor.subscribe('characternotes');
 });
 Template.playermodule.helpers({
   wizardslots() {
     return Wizardslots.find();
+  },
+  characternotes() {
+    let characterId = this._id;
+      Meteor.call("setupNotes", characterId);
+      return Characternotes.find({character: characterId});
   },
   characteritems() {
     let characterId = this._id;
@@ -123,5 +129,10 @@ Template.playermodule.events({
     'click .itemselection'(event) {
       var selectedItem = this._id;
       Session.set("selecteditem", selectedItem);
+    },
+    'click .updateCharacterNotes'(event) {
+      let noteId = this._id;
+      let note = document.getElementById('characternotes').value;
+      Meteor.call("updateCharacterNotes", note, noteId);
     },
 });
