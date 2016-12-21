@@ -1,32 +1,31 @@
 <template name="Dashboard">
-<div class="container-fluid">
-<div class="row">
   {{#if isInRole 'gamemaster'}}
-  <h2 class="page-title"><b>DungeonMaster Dashboard</b></h2>
-    <div class="col-md-6">
+<div class="container-fluid margin">
+<h2><b>DungeonMaster Dashboard</b></h2>
+<a href="/monstermanual"><b>Monster Manual</b></a><br>
+Character Details:
+<div class="row dashboardPlayers">
+  <!-- <div class="col-sm-* dashboardPlayers"> -->
 
     {{> gmmodule}}
+<!-- </div> -->
+</div>
 
-    </div>
-    <div class="col-md-6">
+<br>
     {{> battleorder}}
-    </div>
-    {{/if}}
+
+
 </div>
-</div>
+{{/if}}
 
+{{#if isInRole 'player'}}
+<div class="container-fluid margin">
+  <br>
 
-    {{#if isInRole 'player'}}
-    <h2 class="page-title">Player Dashboard</h2>
-
-      <h3><a href="/charctercreate"><i>Create Character</i></a> // <a href="/localhistory"><i>Local History</i></a> </h3>
-        <!-- <button type="submit" class="charactercreate-toggle">Create Character</button> -->
-        {{#each list}}
-        {{> playermodule}}
-        {{/each}}
-      {{/if}}
-
-{{> addPcModal}}
-
+  {{#each list}}
+  {{> playermodule}}
+  {{/each}}
+  </div>
+  {{/if}}
 
 </template>

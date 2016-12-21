@@ -1,6 +1,11 @@
 <template name="addPcModal">
-  <div class="addpc-modal {{$.Session.get 'addPcModal'}}">
-    <i class="fa fa-close close-charactercreate"></i>
+  <div class="modal fade">
+    <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title"><b>Add Players Rolls'</b></h4>
+             </div>
+             <div class="modal-body">
     {{#each grabcharacters}}
     <h3>Insert Characters Initiative Roll</h3>
     <form>
@@ -15,6 +20,12 @@
 </form>
 {{/each}}
 
-<button class="closeModal">CLOSE ME</button>
+
+</div>
+<div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+</div>
+</div>
 </div>
 </template>

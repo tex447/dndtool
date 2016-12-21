@@ -26,11 +26,8 @@ Level 2 Slots:
 </div> -->
 {{/if}}
 {{#if isInRole 'gamemaster'}}
-  {{#each matchy}}
-  Level 1:{{level1}}
-  {{/each}}
   {{#each casterslots}}
-  <h4>You have&nbsp;<b>{{slots.cantrips}}</b> Cantrips</h4>
+  <h4>Player has&nbsp;<b>{{slots.cantrips}}</b> Cantrips</h4>
   Rages: {{slots.rages}}
     <br>
   Level 1 Slots:

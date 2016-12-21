@@ -1,4 +1,5 @@
 Template.Dashboard.onCreated(function(){
+
   Meteor.subscribe('characters');
 });
 Tracker.autorun(function(){
@@ -26,10 +27,18 @@ Template.playermodule.onCreated(function(){
   Meteor.subscribe('casterslots');
   Meteor.subscribe('characteritems');
   Meteor.subscribe('characternotes');
+  this.state = new ReactiveDict();
 });
+
+
+
 Template.playermodule.helpers({
   wizardslots() {
     return Wizardslots.find();
+  },
+  groupNotes() {
+    Meteor.call("setupGroupNotes");
+    return Characternotes.find({character: "global"});
   },
   characternotes() {
     let characterId = this._id;
@@ -39,6 +48,12 @@ Template.playermodule.helpers({
   characteritems() {
     let characterId = this._id;
     return Characteritems.find({character: characterId});
+  },
+  hitdicewrite() {
+    //grab character id
+    // let characterId = this._id;
+    // Meteor.call("writeTheDice",characterId, playerLevel);
+
   },
   casterslots() {
     let characterId = (this._id);
@@ -91,8 +106,19 @@ Template.playermodule.helpers({
         console.log("Oops");
     }
   },
+  showGlobalNotes() {
+    const instance = Template.instance();
+    return instance.state.get('showGlobalNotes');
+  },
 });
+
 Template.playermodule.events({
+  'click .showGlobalNotes'(event, instance) {
+    instance.state.set('showGlobalNotes', true);
+  },
+  'click .showPersonalNotes'(event, instance) {
+    instance.state.set('showGlobalNotes', false);
+  },
     'click .deathsuccessup'(event) {
       Meteor.call("deathsuccessup", this._id);
     },
@@ -113,8 +139,10 @@ Template.playermodule.events({
       event.target.gold.value = "";
     },
     'click .levelUp'(event) {
-      let characterId = this._id;
-      Meteor.call("levelUp", characterId);
+      Modal.show('levelupmodal');
+    },
+    'click .killtracker'(event) {
+      Modal .show('killTracker');
     },
     'click .addItemToSatchel'(event) {
       let item = document.getElementById('itemToAddToSatchel').value;
@@ -134,5 +162,10 @@ Template.playermodule.events({
       let noteId = this._id;
       let note = document.getElementById('characternotes').value;
       Meteor.call("updateCharacterNotes", note, noteId);
+    },
+    'click .updateGlobalNotes'(event) {
+      let noteId = this._id;
+      let note = document.getElementById('groupNotes').value;
+      Meteor.call("updateGroupNotes", note, noteId);
     },
 });

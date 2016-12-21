@@ -1,34 +1,24 @@
 <template name="gmmodule">
-  <h3><a href="/monstermanual">Monster Manual</a></h3>
-  <h3>Character Details:</h3>
-    {{#each characters}}
 
-<div class="panel panel-default">
-<div class="panel-heading"><b>{{charactername}}</b>
-  Level {{level}} <b>{{dndclass}}</b>
-<button class="btn btn-success longrest">Long Rest</button>
-</div>
-<div class="panel-body">
-<div class="col-sm-5">
-{{alignment}}<br />
+  <!-- <div class="row"> -->
+{{#each characters}}
+<div class="col-sm-3 dm-dashboard-player">
+<div class="character-div">
+<b>{{charactername}}</b><br></div>
+  Level {{level}} <b>{{dndclass}}</b><br>
+  Level {{secondclass.level}} <b>{{secondclass.class}}</b><br>
+  <b>Hit Points: {{hitpoints}}</b><br>
+  <b>Armor Class: {{armorclass}}</b><br>
+
+{{alignment}} <br>
 Pass Percep: <b>{{passiveperception}}</b><br>
 Gold: {{gold}} <br>
 DSave Suc {{deathsavesucces}} <br>
-DSave Fail {{deathsavefails}}
+DSave Fail {{deathsavefails}}<br>
+    {{> spelltracking}}<br>
+<button class="btn-block btn-success longrest animated flash infinite">Long Rest</button>
 </div>
-<div class="col-sm-6">
-<b>Hit Points:</b>
-    <b>{{hitpoints}}</b>
-<br>
-<b>Armor Class:</b>
-    <b>{{armorclass}}</b><br>
-    {{> spelltracking}}
-</div>
-
-
-</div>
-</div>
-
 {{/each}}
-
+<!-- </div> -->
+<br>
 </template>

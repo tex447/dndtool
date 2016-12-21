@@ -244,6 +244,9 @@ removeItem(itemIdToRemove) {
 updateCharacterNotes(note, noteId) {
   Characternotes.update({_id: noteId}, {$set: {'note': note}});
 },
+updateGroupNotes(note, noteId) {
+  Characternotes.update({_id: noteId}, {$set: {'note': note}});
+},
 setupNotes(characterId) {
   if (typeof Characternotes.findOne({character: characterId}) !== 'object') {
     Characternotes.insert({
@@ -252,4 +255,43 @@ setupNotes(characterId) {
       });
   }
 },
+setupGroupNotes() {
+  if (typeof Characternotes.findOne({character: "global"}) !== 'object') {
+    Characternotes.insert({
+        character: "global",
+        note: "If Sowa was the name, quick we checked for a cock with that dame - Vils Volmer, Frequent Visitor of the Red Pony Tavern",
+      });
+  }
+},
+multiClass(characterId, newClass) {
+  Characters.update({_id: characterId}, {$set: {'secondclass.class': newClass, 'secondclass.level': 1}});
+},
+multiClassLevelUp(characterId) {
+  Characters.update({_id: characterId}, {$inc: {'secondclass.level': 1}});
+},
+writeTheDice(characterId) {
+  //grab primary class level
+  let playerLevel = Characters.findOne
+    ({_id: characterId}, {fields: {level: 1}}).level;
+  //grab secondary class level
+  // let secondClassLevel = Characters.findOne
+  //   ({_id: characterId}, {fields: {secondclass.level: 1}}).level;
+  //   console.log(secondClassLevel);
+  // Characters.update({_id: characterId}, {$set: {'hitdicequantity': parseInt(playerLevel)}})
+},
+incMinionKill(characterId) {
+  Characters.update({_id: characterId}, {$inc: {'minionkill': 1}});
+},
+incBossKill(characterId) {
+  Characters.update({_id: characterId}, {$inc: {'bosskill': 1}});
+},
+addCombatRoundTracker() {
+  Battleorder.insert({'round': 1});
+},
+killCombatTracker(id) {
+  Battleorder.remove({_id: id})
+},
+roundUp(id) {
+  Battleorder.update({_id: id},{$inc:{'round':1}});
+}
 });

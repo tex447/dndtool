@@ -1,0 +1,23 @@
+<template name="killTracker">
+  <div class="modal fade">
+    <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title"><b>Add Kill</b></h4>
+             </div>
+             <div class="modal-body killModal">
+
+    <h3>Claim Your Kill Champion</h3>
+
+
+  </div>
+  <div class="modal-footer">{{#each playerinfo}}
+    <button class="btn btn-success minionKill">Add 1 Minion Kill</button>
+    <button class="btn btn-success bossKill">Add 1 Boss Kill</button>
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{/each}} </div>
+  </div>
+  </div>
+  </div>
+
+</template>

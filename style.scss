@@ -1,6 +1,11 @@
 @import 'sass/_normalize.scss';
 @import 'sass/_base.scss';
 
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -29,7 +34,7 @@ h3 {
     font-weight: 50;
 }
 h4 {
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-weight:10;
 }
 
@@ -46,6 +51,26 @@ a {
 // input[type="password"] {
 //     padding: 10px 10px 7px;
 // }
+.tooltip {
+  color: white;
+  background: brown;
+  border-color: black;
+  z-index: 1001;
+  pointer-events: none;
+  transition: opacity .1s ease-out;
+  opacity: 0;
+  padding: 2px 2px 2px;
+  text-shadow: 1px 1px #000000;
+  @include card(1);
+}
+
+.tooltip.hide {
+  opacity: 0;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
 
 .panel-default > .panel-heading-custom {
 background: brown;
@@ -54,16 +79,93 @@ border-color: black;
 
  .panel-default {
  background: $dgrey;
- // background-image: url('/dndbillboard.png'), linear-gradient(#202023, #19283f);
  border-color: black;
-  color: black; }
+  color: white;
+  text-shadow: 1px 1px #000000;
+  @include card(1);
+  background-image: url('/anotherbg.jpg');
+  background-position: left top;
+  background-repeat: no-repeat;
+ }
 
 .panel-default > .panel-heading {
-background: brown;
+  background-color: rgba(62,69,81,0.7);
+// background: brown;
   border-color: black;
+  color: white;
+  padding: 1px 2px 0px;
+  text-shadow: 2px 2px #000000;
+  // background-image: url('/playerheader.png');
+  // background-position: left center;
+  // background-repeat: no-repeat;
+}
+.panel-body {
+  padding: 3px 3px 3px;
+    background-color: rgba(62,69,81,0.2);
+
+
+}
+.dm-dashboard-player {
+  background-color: #607d8b;
+  border: 2px solid black;
+  border-radius: 7px;
+   @include card(1);
+  padding: 3px 5px 3px;
   color: black;
 }
+.dashboardPlayers {
+  background-color: #c0c0c0;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 7px;
+}
 
+.player-dashboard {
+  height: 80px;
+  background-color: #c0c0c0;
+  border: 2px solid brown;
+  border-radius: 5px;
+  background-image: url('/playerheader2.jpg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  @include card(1);
+  font-size: 20px;
+  text-align: right;
+  vertical-align: middle;
+  line-height: 120px;
+  color: white;
+  text-shadow: 1px 1px #000000;
+}
+
+.character-div {
+  background-color: #007E33;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0px 5px 0px 5px;
+  color: white;
+  @include card(1);
+}
+
+.dm-dashboard-initiative {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px 3px 3px 3px;
+  background-image: url('/cooldiceguy.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  @include card(1);
+}
+.killModal {
+  height: 300px;
+  background-color: brown;
+  border: 0px solid black;
+  border-radius: 5px;
+  background-image: url('/coolbattle.jpg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: white;
+}
 .panel-awesome {
   background: $dgrey;
   background-image: url('/playerdbbackground.png'), linear-gradient(#202023, #19283f);
@@ -108,6 +210,26 @@ background: brown;
   border: 1px solid black;
   width: 340px;
   cursor: move;
+  @include card(1);
+}
+
+.diary {
+  background-color: $dgrey;
+  border-bottom: 2pxs solid $dgrey;
+  text-shadow: 2px 2px #000000;
+  @include card(1);
+}
+
+.satchelsack {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  background-image: url('/pack.jpg');
+  background-position: right top;
+  background-repeat: no-repeat;;
+  border-radius: 3px;
+  padding: 3px;
+  @include card(1);
 }
 //
 // .btn-text {
@@ -133,13 +255,13 @@ background: brown;
     color: red;
     position: relative;
     z-index: 10;
-    height: 60px;
+    height: 50px;
     padding: 5px 5%;
     display: flex;
     justify-content: space-between;
     @include card(1);
     a {
-        color: red;
+        color: white;
     }
     .site-title {
         line-height: 3;
@@ -152,9 +274,12 @@ background: brown;
         list-style: none;
         display: flex;
         padding: 0;
+        margin-top: 10px;
     }
     li + li {
-        margin-left: 20px;
+        margin-left: 30px;
+        margin-top: 0px;
+
     }
     a {
         text-decoration: none;
@@ -177,13 +302,38 @@ background: brown;
 }
 
 .bgimg {
-  background-image: url('/D&D_Transparent.png');
-  padding: 400px;
+  width: 1920;
+  height: 1080;
+  background-image: url('/badassguy.jpg');
+  background-size: cover;
+  // border: 1px solid black;
+  // border-radius: 5px;
+  // padding: 15px 5px 15px;
+  padding: 200px 25px;
 }
+
+.login-div{
+  color: #ffbb33;
+  width: 300;
+  // background-color: white;
+  background-color: rgba(62,69,81,0.7);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  text-shadow: 1px 1px #000000;
+  @include card(1);
+}
+
+.margin {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .app-layout {
-    margin-left: 20px;
-    min-height: 25vh;
-    padding: 20px 30px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+    // min-height: 25vh;
+    // padding: 20px 30px;
 }
 
 .app-nav {
@@ -288,49 +438,4 @@ table {
     text-align: center;
     vertical-align: middle;
     color: white
-}
-
-.myButton {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color:#ededed;
-	-webkit-border-top-left-radius:15px;
-	-moz-border-radius-topleft:15px;
-	border-top-left-radius:15px;
-	-webkit-border-top-right-radius:15px;
-	-moz-border-radius-topright:15px;
-	border-top-right-radius:15px;
-	-webkit-border-bottom-right-radius:0px;
-	-moz-border-radius-bottomright:0px;
-	border-bottom-right-radius:0px;
-	-webkit-border-bottom-left-radius:0px;
-	-moz-border-radius-bottomleft:0px;
-	border-bottom-left-radius:0px;
-	text-indent:0;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	font-style:normal;
-	height:65px;
-	line-height:65px;
-	width:86px;
-	text-decoration:none;
-	text-align:center;
-	text-shadow:1px 1px 0px #ffffff;
-}
-.myButton:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#dfdfdf;
-}.myButton:active {
-	position:relative;
-	top:1px;
 }

@@ -1,38 +1,49 @@
 <template name="battleorder">
-<div class="row">
-    <div class="col-sm-6">
-  <h3>Initiative!</h3>
+  <div class="row dm-dashboard-initiative">
+    <div class="col-md-6">
+{{#each combatround}}
+  <h3>Initiative! - Round {{round}} <button class="btn btn-success roundUp">
+    <span class="glyphicon glyphicon-plus"></span></button></h3>
 
-  <p><button class="btn btn-primary addPcModal-toggle">Add Characters Rolls'</button></p>
 
-
+<button class="btn btn-danger killCombatTracker">End Combat</button>{{/each}}
+<button class="btn btn-primary addCombatRoundTracker"><b>Commence Combat</b></button>
+<button class="btn btn-primary addPcModal">Add Characters Rolls'</button>
     <div id="items">
       Highest Initiative....
       {{#each items}}
 
-        <div class="item chooseNpcName">
+        <div class="item chooseNpcName" data-tooltip="Name:{{name}},<br> Rank:{{rank}}">
           <b>{{name}}</b> HP:&nbsp;
-  <button class="btn btn-success npcHealthUp"><span class="glyphicon glyphicon-plus"></span></button>
+  <button class="btn btn-success npcHealthUp">
+    <span class="glyphicon glyphicon-plus"></span></button>
           {{health}}
-          <button class="btn btn-danger npcHealthDown"><span class="glyphicon glyphicon-minus"></span></button>
+          <button class="btn btn-danger npcHealthDown">
+            <span class="glyphicon glyphicon-minus"></span></button>
           AC:{{ac}}
-          <Button class="btn btn-danger killNpc alignright"><span class="glyphicon glyphicon-off killNpc"></span>
+          <Button class="btn btn-danger killNpc alignright">
+            <span class="glyphicon glyphicon-off killNpc"></span>
           </Button>
 
         </div>
       {{/each}}
       Lowest Initiative....
     </div>
+
+
+</div>
+<div class="col-md-6"></div>
+Things to put here!<br>
+Name:{{combatroundstats.[0].name}}<br>
+Health:{{combatroundstats.health}}<br>
+AC:{{combatroundstats.ac}}<br>
+<button class="btn btn-success nextPlayer">NeXT PlayeR</button>
 </div>
 
-<div class="col-sm-2">
-  <img src="cooldiceguy.png" alt="" height="250" width="250">
-</div>
-</div>
 
 <br>
 <div class="row">
-  <div class="col-md-*">
+  <div class="col-md-5">
   <div class="panel panel-default">
   <div class="panel-heading panel-heading-custom"><b>NPC Submit</b> </div>
   <div class="panel-body">
@@ -73,4 +84,5 @@ Quantity:<select name="monsterQuantity" id="monsterQuantity" class="form-control
 </div>
 </div>
 </div>
+{{> tooltips}}
 </template>

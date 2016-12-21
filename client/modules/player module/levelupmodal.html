@@ -1,0 +1,42 @@
+<template name="levelupmodal">
+    <div class="modal fade">
+      <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h4 class="modal-title"><b>Level Up</b></h4>
+               </div>
+               <div class="modal-body">
+                 {{#each playerinfo}}
+                   You are currently a level {{level}} , {{dndclass}} <button class="btn btn-success levelUp">Level Up</button><br><br>
+                   Multi Class: {{secondclass.class}}, Level: {{secondclass.level}} <button class="btn btn-success multiClassLevelUp">Multi Class Level Up</button>
+
+                   <br><br>
+                   Multi-class by choosing an additional class:
+                   <form action="newCharClass">
+                   <select class="form-control newCharClass" id="newCharClass">
+         <option class="barbarian">Barbarian</option>
+         <option class="bard">Bard</option>
+         <option class="cleric">Cleric</option>
+         <option class="druid">Druid</option>
+         <option class="monk">Monk</option>
+         <option class="paladin">Paladin</option>
+         <option class="ranger">Ranger</option>
+         <option class="rogue">Rogue</option>
+         <option class="sorcerer">Sorcerer</option>
+         <option class="warlock">Warlock</option>
+         <option class="wizard">Wizard</option>
+       </select>
+       </form>
+
+      <br>
+      <button class="btn btn-success multiClass">MULTICLASS</button>
+      {{/each}}
+               </div>
+<div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+
+           </div>
+       </div>
+    </div>
+</template>

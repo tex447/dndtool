@@ -2,6 +2,11 @@ Template.Dashboard.onCreated(function() {
     Meteor.subscribe('battleorder');
     Meteor.subscribe('monstermanual');
 });
+var found = [];
+function findNext(){
+  var queryNext = {_id:{$nin:found}, name: {$exists: true}};
+  return Battleorder.findOne(queryNext);
+}
 
 Template.battleorder.events({
 'submit form': function(event) {
@@ -11,6 +16,18 @@ Template.battleorder.events({
   Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcDexterity)
     event.target.npcName.value = "";
     event.target.npcHealth.value = "";
+},
+'click .addPcModal'(event) {
+  Modal.show('addPcModal');
+},
+'click .addCombatRoundTracker'(event) {
+  Meteor.call('addCombatRoundTracker');
+},
+'click .killCombatTracker'(event) {
+  Meteor.call('killCombatTracker', this._id);
+},
+'click .roundUp'(event) {
+  Meteor.call('roundUp', this._id);
 },
 'click .killNpc'(event) {
 Meteor.call('whoToKill', this._id);
@@ -24,6 +41,18 @@ Meteor.call('whoToKill', this._id);
 'click .monsterselection'(event) {
   var selectedMonster = this._id;
   Session.set("selectedMonster", selectedMonster);
+},
+'click .nextPlayer' : function() {
+var nextPlayer = findNext();
+if(nextPlayer){
+  found.push(nextPlayer._id);
+}
+if(!nextPlayer){
+  found = [];
+  nextPlayer = findNext();
+  found.push(nextPlayer._id);
+}
+console.log(nextPlayer);
 },
 'click .submitFromMonsterManual'(event) {
 var monsterToAdd = Session.get("selectedMonster");
@@ -48,12 +77,22 @@ Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcArmorClass, monsterQua
 });
 Template.battleorder.helpers({
 items: function() {
-      return Battleorder.find({}, {sort: {rank: -1}});
+      return Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}});
+},
+combatround() {
+  return Battleorder.find({round: {$exists: true}});
 },
 monsterManualList() {
   return Monstermanual.find();
 },
+combatroundstats(){
+  var poop = Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
+  // console.log(poop);
+  return Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
+},
 });
+
+
 Template.battleorder.rendered = function() {
     this.$('#items').sortable({
         stop: function(e, ui) {

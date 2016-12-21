@@ -12,15 +12,6 @@ Template.Dashboard.onCreated(function() {
 });
 
 Template.Dashboard.events({
-    'click .gamename-toggle': () => {
-        Session.set('gamename-toggle', 'open');
-    },
-    'click .addPcModal-toggle': () => {
-        Session.set('addPcModal', 'open');
-    },
-    'click .charactercreate-toggle': () => {
-        Session.set('charactercreate-toggle', 'open');
-    },
     'click .hitpointsup' (event) {
         Meteor.call('hitpointsup', this._id);
     },

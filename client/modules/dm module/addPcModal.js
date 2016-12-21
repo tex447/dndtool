@@ -1,8 +1,5 @@
 
 Template.addPcModal.events({
-  'click .close-charactercreate': ()=> {
-    Session.set('addPcModal', '');
-  },
   'submit form': function(event) {
     event.preventDefault();
     var characterId = this._id;
@@ -12,9 +9,6 @@ Template.addPcModal.events({
     Meteor.call("addPcInitRolls", playerName, initRoll);
     event.target.pcInitRoll.value = "";
   },
-  'click .closeModal': ()=> {
-    Session.set('addPcModal', '');
-  }
   });
 
 

@@ -94,6 +94,37 @@ CharacterSchema = new SimpleSchema({
   label:false},
   defaultValue: 0
   },
+secondclass: {
+    type: Object,
+    autoform: {type: "hidden",
+  label:false},
+},
+"secondclass.class": {
+  type: String,
+  defaultValue: "None"
+},
+"secondclass.level": {
+  type: Number,
+  defaultValue: 0
+},
+hitdicequantity:{
+  type: Number,
+  autoform: {type: "hidden",
+label:false},
+defaultValue: 1
+},
+minionkill:{
+  type: Number,
+  autoform: {type: "hidden",
+label:false},
+defaultValue: 0
+},
+bosskill:{
+  type: Number,
+  autoform: {type: "hidden",
+label:false},
+defaultValue: 0
+},
 });
 
 Characters.attachSchema( CharacterSchema );

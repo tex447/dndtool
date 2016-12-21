@@ -2,7 +2,7 @@
 FlowRouter.route('/', {
     name: 'home',
     action() {
-        BlazeLayout.render("HomeLayout", {main: "Home"});
+        BlazeLayout.render("AppLayout", {main: "Home"});
     }
 });
 
@@ -31,15 +31,3 @@ FlowRouter.route('/localhistory', {
         BlazeLayout.render("AppLayout", {main: "history"});
     }
 });
-
-var adminRoutes = FlowRouter.group({
-  prefix: '/admin',
-  name: 'gamemaster'
-});
-
-adminRoutes.route('/users', {
-  name: 'users',
-  action() {
-      BlazeLayout.render("AppLayout", {main: "Users"});
-  }
-})

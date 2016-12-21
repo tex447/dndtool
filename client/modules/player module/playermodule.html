@@ -1,16 +1,18 @@
 <template name="playermodule">
   <div class="row">
-  <div class="panel panel-default">
-  <div class="panel-heading"><b>{{charactername}}</b>&nbsp; <button class="btn btn-success levelUp">Level Up</button> </div>
-  <div class="panel-body panel-awesome">
-<div class="col-xs-2">
-  <b>Level {{level}} {{dndclass}}</b><br />
-</div>
-<div class="col-xs-2">
+    <div class="player-dashboard">
+  <b>Player Dashboard </b>&nbsp;
+</div><br>
 
+  <div class="panel panel-default">
+  <div class="panel-heading"><h4><b>{{charactername}}</b>&nbsp; <button class="btn btn-success levelUp">Level Up</button></h4> </div>
+  <div class="panel-body">
+<div class="col-xs-3">
+  <b>Level {{level}} {{dndclass}}</b><br />
+  <b>Multi:{{secondclass.class}} {{secondclass.level}}</b><br>
   {{alignment}}<br />
   Pass Perc. {{passiveperception}}<br />
-  Hit Dice {{hitdice}}
+  Hit Dice: {{hitdice}}
 </div>
 <div class="col-xs-2">
   <b>Hit Points</b> <br />  <button class="hitpointsup btn btn-success">
@@ -41,25 +43,40 @@
   <span class="glyphicon glyphicon-minus-sign"></span>
 </button><br />
 </div>
-<div class="col-xs-3">
-  {{> spelltracking}}
+<div class="col-xs-2">
+  <b>KillTracker</b><br>
+  Minions: {{minionkill}}<br>
+  Bosses: {{bosskill}}<br>
+  <button class="btn btn-primary killtracker">Add Kill</button>
 </div>
+<div class="col-xs-3"><b>SpellTracking</b><br>
+  {{> spelltracking}}
+  <br>
+</div>
+
 </div>
 </div>
 </div>
 <div class="row">
-<div class="col-sm-6">
-  <h3> Your Diary: </h3>
+<div class="col-sm-* login-div">
+  <h3> <b>Diary: </b><button class="btn btn-primary showGlobalNotes">Group Diary</button> <button class="btn btn-primary showPersonalNotes">Personal Diary</button> </h3>
+{{#if showGlobalNotes}}
+{{#each groupNotes}}
+<textarea id="groupNotes" class="form-control" rows="10">{{note}}</textarea>
+<br>
+<button class="btn btn-success updateGlobalNotes">Update Notes</button><br>{{/each}}
+{{else}}
   {{#each characternotes}}
     <textarea id="characternotes" class="form-control" rows="10">{{note}}</textarea>
     <br>
-    <button class="btn btn-success updateCharacterNotes">Update Notes</button>
+    <button class="btn btn-success updateCharacterNotes">Update Notes</button><br>
     {{/each}}
+{{/if}}
   </div>
-  <div class="col-sm-6">
-      <div class="panel panel-default">
-      <div class="panel-heading">Satchel Sack </div>
-      <div class="panel-body">
+</div><br>
+  <div class="row">
+  <div class="col-sm-* satchelsack">
+    <h3><b>SatchelSack</b></h3>
         <h4>Potions: <button class="potionsup btn btn-success">
           <span class="glyphicon glyphicon-plus-sign"></span>
         </button><b>&nbsp;{{potions}}&nbsp;</b><button class="potionsdown btn btn-danger">
@@ -85,14 +102,11 @@
   <option class="itemselection">{{item}}</option>
 {{/each}}
 </select><br>
-<input type="text" id="itemToAddToSatchel" placeholder="What do you want to add?"><button class="btn btn-primary addItemToSatchel">Add to Satchel</button>
+<input type="text" id="itemToAddToSatchel" placeholder="What do you want to add?">&nbsp;<button class="btn btn-primary addItemToSatchel">Add to Satchel</button>
 <button class="btn btn-danger removeItem">Remove Item</button>
 </div>
-
-      </div>
-    </div>
-    </div>
-    </div>
+</div>
+</div><br>
     <div class="row">
 
     </div>
