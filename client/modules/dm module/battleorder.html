@@ -1,19 +1,15 @@
 <template name="battleorder">
   <div class="row dm-dashboard-initiative">
-    <div class="col-md-6">
-{{#each combatround}}
-  <h3>Initiative! - Round {{round}} <button class="btn btn-success roundUp">
-    <span class="glyphicon glyphicon-plus"></span></button></h3>
+    <div class="col-md-5">
+#1 - Add Monsters Below<br>
+#2 <button class="btn btn-primary addPcModal">Add Characters Rolls'</button><br>
+#3 <button class="btn btn-primary addCombatRoundTracker"><b>Commence Combat</b></button>
 
-
-<button class="btn btn-danger killCombatTracker">End Combat</button>{{/each}}
-<button class="btn btn-primary addCombatRoundTracker"><b>Commence Combat</b></button>
-<button class="btn btn-primary addPcModal">Add Characters Rolls'</button>
     <div id="items">
       Highest Initiative....
       {{#each items}}
 
-        <div class="item chooseNpcName" data-tooltip="Name:{{name}},<br> Rank:{{rank}}">
+        <div class="item chooseNpcName">
           <b>{{name}}</b> HP:&nbsp;
   <button class="btn btn-success npcHealthUp">
     <span class="glyphicon glyphicon-plus"></span></button>
@@ -32,12 +28,28 @@
 
 
 </div>
-<div class="col-md-6"></div>
-Things to put here!<br>
-Name:{{combatroundstats.[0].name}}<br>
-Health:{{combatroundstats.health}}<br>
-AC:{{combatroundstats.ac}}<br>
-<button class="btn btn-success nextPlayer">NeXT PlayeR</button>
+<div class="col-md-6 battleorderCard">
+{{#each combatround}}
+  <h4><b>Initiative! - Round {{round}} </b>
+  <button class="btn btn-danger killCombatTracker">End Combat</button></h4>
+
+
+<b>Name: {{combatroundstats.name}}</b><br>
+<b>Health</b>: {{combatroundstats.health}}<br>
+<b>AC</b>: {{combatroundstats.ac}}<br>
+<b>Speed</b>: {{combatroundstats.speed}}<br>
+<b>Skills</b>: {{combatroundstats.skills}}<br>
+<b>Senses</b>: {{combatroundstats.senses}}<br>
+<b>Languages</b>: {{combatroundstats.languages}}<br>
+<b>Challenge</b>: {{combatroundstats.challenge}}<br>
+<b>Action 1</b>: {{combatroundstats.action1}}<br>
+<b>Action 2</b>: {{combatroundstats.action2}}<br>
+<b>Action 3</b>: {{combatroundstats.action3}}<br>
+<b>Reaction 1</b>: {{combatroundstats.reaction1}}<br><br>
+<button class="btn btn-success nextPlayer">NeXT PlayeR</button>{{/each}}
+<br>
+
+</div>
 </div>
 
 
@@ -45,21 +57,8 @@ AC:{{combatroundstats.ac}}<br>
 <div class="row">
   <div class="col-md-5">
   <div class="panel panel-default">
-  <div class="panel-heading panel-heading-custom"><b>NPC Submit</b> </div>
+  <div class="panel-heading panel-heading-custom"><b>Monster Manual</b> </div>
   <div class="panel-body">
-<form name="addNpc">
-  <div class="form-group">
-    <label for="npcName">NPC Name</label>
-  <input type="text" class="form-control" name="npcName" placeholder="NPC Name">
-  </div>
-  <div class="form-group">
-    <label for="npcName">NPC Health</label>
-  <input type=number class="form-control" name="npcHealth" placeholder="NPC Health">
-</div>
-  <div class="form-group">
-    <input type="submit" class="btn" value="Add NPC">
-  </div>
-  </form>
     <form name="monstermanual">
       <div class="form-group">
   <b>Monster Manual:</b>

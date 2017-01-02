@@ -125,6 +125,119 @@ bosskill:{
 label:false},
 defaultValue: 0
 },
+weapons: {
+  type: [Object],
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon1.name": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon2.name": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon3.name": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon1.attackbonus": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon2.attackbonus": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon3.attackbonus": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon1.attackdamage": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon2.attackdamage": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon3.attackdamage": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon1.attackrange": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon2.attackrange": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon3.attackrange": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon1.weaponnote": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon2.weaponnote": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon3.weaponnote": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon1.damagetype": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon2.damagetype": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
+"weapons.weapon3.damagetype": {
+  type: String,
+  optional: true,
+  autoform: {type: "hidden",
+label:false}
+},
 });
 
 Characters.attachSchema( CharacterSchema );

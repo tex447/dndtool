@@ -171,28 +171,24 @@ writeBarbarianStats(barbarianStats, userId, characterId) {
 updateBarbarianStats(barbarianStats, characterId) {
     Casterslots.update({character: characterId}, {$set: {slots: barbarianStats}});
 },
-addNpcToBattleOrder(npcName, npcHealth, npcArmorClass, monsterQuantity) {
+addMonsterToBattleOrder(monster, monsterQuantity, npcName) {
 var number = parseInt(monsterQuantity);
+var droll = require('droll');
+var npcDexterity = droll.roll('1d20');
 i = 1;
 if (number == 1) {
-  var droll = require('droll');
-  var npcDexterity = droll.roll('1d20');
-  Battleorder.insert({
-    name: npcName,
-    rank: npcDexterity.total,
-    health: parseInt(npcHealth),
-    ac: parseInt(npcArmorClass),
-  })
+  Object.defineProperty(monster,
+    'rank', {value: npcDexterity.total})
+  Battleorder.insert(monster);
 } else {
   while (i < number + 1) {
     var droll = require('droll');
-    var npcDexterity = droll.roll('1d20');
-  Battleorder.insert({
-    name: npcName + i,
-    rank: npcDexterity.total,
-    health: parseInt(npcHealth),
-    ac: parseInt(npcArmorClass),
-  });
+    var npcDexterity1 = droll.roll('1d20');
+    Object.defineProperty(monster,
+      'name', {value: npcName + i}),
+      Object.defineProperty(monster,
+        'rank', {value: npcDexterity1.total}),
+  Battleorder.insert(monster);
   i++;
   }
 }
@@ -231,11 +227,21 @@ updategold(id, newGold) {
 levelUp(characterId) {
   Characters.update({_id: characterId}, {$inc: {'level': 1}});
 },
-addToMonsterManual(npcName, npcHealth, npcAc) {
+addToMonsterManual(npcRank, npcName, npcHealth, npcAc, npcSpeed, npcSkills, npcSenses, npcLanguages, npcChallenge, npcAction1, npcAction2, npcAction3, npcReaction1) {
   Monstermanual.insert({
     name: npcName,
     health: parseInt(npcHealth),
     ac: parseInt(npcAc),
+    speed: npcSpeed,
+    skills: npcSkills,
+    senses: npcSenses,
+    languages: npcLanguages,
+    challenge: npcChallenge,
+    rank: npcRank,
+    action1: npcAction1,
+    action2: npcAction2,
+    action3: npcAction3,
+    reaction1: npcReaction1
   });
 },
 removeItem(itemIdToRemove) {
@@ -293,5 +299,82 @@ killCombatTracker(id) {
 },
 roundUp(id) {
   Battleorder.update({_id: id},{$inc:{'round':1}});
+},
+addWeapon(weaponNumber, characterId, weaponName, attackBonus, attackDamage, attackRange, weaponNote, damageType) {
+  console.log(weaponNumber);
+switch(weaponNumber) {
+  case "wep1":
+  Characters.update({_id:characterId},
+    {$set:
+       {'weapons.weapon1.name': weaponName,
+       'weapons.weapon1.attackbonus': attackBonus,
+       'weapons.weapon1.attackdamage': attackDamage,
+       'weapons.weapon1.attackrange': attackRange,
+       'weapons.weapon1.weaponnote': weaponNote,
+       'weapons.weapon1.damagetype': damageType,
+        }
+      });
+      break;
+  case "wep2":
+  Characters.update({_id:characterId},
+    {$set:
+       {'weapons.weapon2.name': weaponName,
+       'weapons.weapon2.attackbonus': attackBonus,
+       'weapons.weapon2.attackdamage': attackDamage,
+       'weapons.weapon2.attackrange': attackRange,
+       'weapons.weapon2.weaponnote': weaponNote,
+       'weapons.weapon2.damagetype': damageType,
+        }
+      });
+      break;
+  case "wep3":
+  Characters.update({_id:characterId},
+    {$set:
+       {'weapons.weapon3.name': weaponName,
+       'weapons.weapon3.attackbonus': attackBonus,
+       'weapons.weapon3.attackdamage': attackDamage,
+       'weapons.weapon3.attackrange': attackRange,
+       'weapons.weapon3.weaponnote': weaponNote,
+       'weapons.weapon3.damagetype': damageType,
+        }
+      });
+      break;
 }
-});
+},
+removeWeapon1(characterId) {
+  Characters.update({_id:characterId},
+     { $unset:
+       { 'weapons.weapon1.name': "",
+          'weapons.weapon1.attackbonus':"",
+          'weapons.weapon1.attackdamage':"",
+          'weapons.weapon1.attackrange':"",
+          'weapons.weapon1.weaponnote':"",
+          'weapons.weapon1.damagetype':""
+     }
+     });
+},
+removeWeapon2(characterId) {
+  Characters.update({_id:characterId},
+     { $unset:
+       { 'weapons.weapon2.name': "",
+          'weapons.weapon2.attackbonus':"",
+          'weapons.weapon2.attackdamage':"",
+          'weapons.weapon2.attackrange':"",
+          'weapons.weapon2.weaponnote':"",
+          'weapons.weapon2.damagetype':""
+     }
+     });
+},
+removeWeapon3(characterId) {
+  Characters.update({_id:characterId},
+     { $unset:
+       { 'weapons.weapon3.name': "",
+          'weapons.weapon3.attackbonus':"",
+          'weapons.weapon3.attackdamage':"",
+          'weapons.weapon3.attackrange':"",
+          'weapons.weapon3.weaponnote':"",
+          'weapons.weapon3.damagetype':""
+     }
+     });
+},
+})

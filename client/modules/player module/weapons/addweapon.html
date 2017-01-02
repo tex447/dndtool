@@ -1,0 +1,63 @@
+<template name="addweapon">
+  <div class="modal fade">
+    <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title"><b>Add Weapon</b></h4>
+             </div>
+             <div class="modal-body">
+{{#each playerinfo}}
+    <form class="form-inline" name="addWeapon">
+      <div class="form-group">
+        <select name="weaponNumber" id="weaponNumber" class="form-control input-sm">
+          <option value="wep1">Weapon 1</option>
+          <option value="wep2">Weapon 2</option>
+          <option value="wep3">Weapon 3</option>
+        </select><br><br>
+        <label for="weaponName" class="col-sm-2 control-label">Weapon Name</label>
+      <input type="text" class="form-control" name="weaponName" placeholder="Name" width="150">
+DMG Type:<select name="damageType" id="damageType" class="form-control input-sm">
+  <option value="Piercing">Piercing</option>
+  <option value="Slashing">Slashing</option>
+  <option value="Bludgeoning">Bludgeoning</option>
+  <option value="Fire">Fire</option>
+  <option value="Cold">Cold</option>
+  <option value="Acid">Acid</option>
+  <option value="Psychic">Psychic</option>
+  <option value="Necrotic">Necrotic</option>
+  <option value="Lightning">Lightning</option>
+  <option value="Radiant">Radiant</option>
+  <option value="Thunder">Thunder</option>
+  <option value="Force">Force</option>
+</select><br>
+
+    </div> <br>
+      <div class="form-group">
+        <label for="attackBonus">ATK Bonus</label>
+      <input type="text" size="10" class="form-control" name="attackBonus" placeholder="" width="150">
+      &nbsp;<label for="attackDamage">DMG</label>
+    <input type="text" size="10" class="form-control" name="attackDamage" placeholder="" width="150">
+    &nbsp;<label for="attackRange">Range</label>
+  <input type="text" size="10" class="form-control" name="attackRange" placeholder="" width="150">
+      <br></div><br>
+      <div class="form-group">
+
+      <label for="weaponNote">Note</label>
+      <input type="text" class="form-control" name="weaponNote" placeholder="">
+      </div><p>
+      <div class="form-group">
+        <input type="submit" class="btn" value="Add Weapon">
+      </div></p>
+
+      </form>
+{{/each}}
+  </div>
+  <div class="modal-footer">
+
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+  </div>
+  </div>
+  </div>
+
+</template>

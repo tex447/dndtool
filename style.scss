@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  background-color: gray;
     color: $text;
     font-family: 'Open Sans', sans-serif;
 }
@@ -88,6 +89,25 @@ border-color: black;
   background-repeat: no-repeat;
  }
 
+.combatModeWeapons{
+  padding: 1px 3px 1px;
+  @include card(1);
+  background-color: rgba(62,69,81,0.7);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.battleorderCard {
+background-color: rgba(62,69,81,0.7);
+text-shadow: 1px 1px black;
+border: 2px solid black;
+border-radius: 5px;
+color: white;
+}
+.combatModeButtons {
+  width: 120px;
+  padding: 2px 2px 2px;
+}
+
 .panel-default > .panel-heading {
   background-color: rgba(62,69,81,0.7);
 // background: brown;
@@ -100,9 +120,8 @@ border-color: black;
   // background-repeat: no-repeat;
 }
 .panel-body {
-  padding: 3px 3px 3px;
+  padding: 2px 2px 2px;
     background-color: rgba(62,69,81,0.2);
-
 
 }
 .dm-dashboard-player {
@@ -116,8 +135,9 @@ border-color: black;
 .dashboardPlayers {
   background-color: #c0c0c0;
   padding: 10px;
-  border: 2px solid white;
+  border: 1px solid black;
   border-radius: 7px;
+  @include card(1);
 }
 
 .player-dashboard {

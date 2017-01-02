@@ -5,9 +5,68 @@
 </div><br>
 
   <div class="panel panel-default">
-  <div class="panel-heading"><h4><b>{{charactername}}</b>&nbsp; <button class="btn btn-success levelUp">Level Up</button></h4> </div>
+  <div class="panel-heading"><h4><b>{{charactername}}</b>&nbsp; <button class="btn btn-success levelUp">Level Up</button>
+<button class="btn btn-primary combatMode">Combat Mode</button>
+<button class="btn btn-primary storyMode">Story Mode</button>
+  </h4> </div>
   <div class="panel-body">
-<div class="col-xs-3">
+    {{#if combatMode}}
+<div class="col-xs-2 combatModeButtons">
+<button class="btn btn-primary addWeapon">Add Weapon</button>
+<br><br>
+<b>HP: </b>  <button class="hitpointsup btn btn-success">
+  <span class="glyphicon glyphicon-plus-sign"></span>
+    </button>
+    <b>{{hitpoints}}</b>
+  <button class="hitpointsdown btn btn-danger">
+<span class="glyphicon glyphicon-minus-sign"></span>
+</button><br /><br>
+<b>AC: </b>  <button class="armorclassup btn btn-success">
+  <span class="glyphicon glyphicon-plus-sign"></span>
+    </button>
+    <b>{{armorclass}}</b>
+  <button class="armorclassdown btn btn-danger">
+<span class="glyphicon glyphicon-minus-sign"></span>
+</button>
+</div>
+<div class="col-xs-2"><b>SpellTracking</b><br>
+  {{> spelltracking}}
+  <br>
+</div>
+<div class="col-xs-8 combatModeWeapons">
+  <b>Weapons</b><br>
+  <b>{{weapons.weapon1.name}}</b> - <i>{{weapons.weapon1.damagetype}}</i>
+  <button class="removeWeapon1 btn btn-danger">
+   <span class="glyphicon glyphicon-trash"></span>
+     </button>
+  <br>
+  <b>ATK Bonus</b>: {{weapons.weapon1.attackbonus}}
+  <b>DMG</b>: {{weapons.weapon1.attackdamage}}
+  <b>RNG</b>: {{weapons.weapon1.attackrange}}<br>
+  Note: {{weapons.weapon1.weaponnote}}<br><br>
+  <b>{{weapons.weapon2.name}}</b> - <i>{{weapons.weapon2.damagetype}}</i>
+  <button class="removeWeapon2 btn btn-danger">
+   <span class="glyphicon glyphicon-trash"></span>
+     </button>
+  <br>
+  <b>ATK Bonus</b>: {{weapons.weapon2.attackbonus}}
+  <b>DMG</b>: {{weapons.weapon2.attackdamage}}
+  <b>RNG</b>: {{weapons.weapon2.attackrange}}<br>
+  Note: {{weapons.weapon2.weaponnote}}<br><br>
+
+  <b>{{weapons.weapon3.name}}</b> - <i>{{weapons.weapon3.damagetype}}</i>
+  <button class="removeWeapon3 btn btn-danger">
+   <span class="glyphicon glyphicon-trash"></span>
+     </button>
+  <br>
+  <b>ATK Bonus</b>: {{weapons.weapon3.attackbonus}}
+  <b>DMG</b>: {{weapons.weapon3.attackdamage}}
+  <b>RNG</b>: {{weapons.weapon3.attackrange}}<br>
+  Note: {{weapons.weapon3.weaponnote}}<br>
+
+</div>
+{{else}}
+<div class="col-xs-2">
   <b>Level {{level}} {{dndclass}}</b><br />
   <b>Multi:{{secondclass.class}} {{secondclass.level}}</b><br>
   {{alignment}}<br />
@@ -15,14 +74,14 @@
   Hit Dice: {{hitdice}}
 </div>
 <div class="col-xs-2">
-  <b>Hit Points</b> <br />  <button class="hitpointsup btn btn-success">
+  <b>HP: </b>  <button class="hitpointsup btn btn-success">
     <span class="glyphicon glyphicon-plus-sign"></span>
       </button>
       <b>{{hitpoints}}</b>
     <button class="hitpointsdown btn btn-danger">
   <span class="glyphicon glyphicon-minus-sign"></span>
-</button><br /><br />
-  <b>Armor Class</b><br />  <button class="armorclassup btn btn-success">
+</button><br /><br>
+  <b>AC: </b>  <button class="armorclassup btn btn-success">
     <span class="glyphicon glyphicon-plus-sign"></span>
       </button>
       <b>{{armorclass}}</b>
@@ -43,17 +102,7 @@
   <span class="glyphicon glyphicon-minus-sign"></span>
 </button><br />
 </div>
-<div class="col-xs-2">
-  <b>KillTracker</b><br>
-  Minions: {{minionkill}}<br>
-  Bosses: {{bosskill}}<br>
-  <button class="btn btn-primary killtracker">Add Kill</button>
-</div>
-<div class="col-xs-3"><b>SpellTracking</b><br>
-  {{> spelltracking}}
-  <br>
-</div>
-
+{{/if}}
 </div>
 </div>
 </div>

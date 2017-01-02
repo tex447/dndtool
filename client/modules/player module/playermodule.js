@@ -110,9 +110,19 @@ Template.playermodule.helpers({
     const instance = Template.instance();
     return instance.state.get('showGlobalNotes');
   },
+  combatMode() {
+    const instance = Template.instance();
+    return instance.state.get('combatMode');
+  },
 });
 
 Template.playermodule.events({
+  'click .combatMode'(event, instance) {
+    instance.state.set('combatMode', true);
+  },
+  'click .storyMode'(event, instance) {
+    instance.state.set('combatMode', false);
+  },
   'click .showGlobalNotes'(event, instance) {
     instance.state.set('showGlobalNotes', true);
   },
@@ -144,6 +154,9 @@ Template.playermodule.events({
     'click .killtracker'(event) {
       Modal .show('killTracker');
     },
+    'click .addWeapon'(event) {
+      Modal .show('addweapon');
+    },
     'click .addItemToSatchel'(event) {
       let item = document.getElementById('itemToAddToSatchel').value;
       let characterId = this._id;
@@ -167,5 +180,17 @@ Template.playermodule.events({
       let noteId = this._id;
       let note = document.getElementById('groupNotes').value;
       Meteor.call("updateGroupNotes", note, noteId);
+    },
+    'click .removeWeapon1'(event) {
+     let characterId = this._id;
+     Meteor.call("removeWeapon1", characterId);
+    },
+    'click .removeWeapon2'(event) {
+      let characterId = this._id;
+      Meteor.call("removeWeapon2", characterId);
+    },
+    'click .removeWeapon3'(event) {
+      let characterId = this._id;
+      Meteor.call("removeWeapon3", characterId);
     },
 });

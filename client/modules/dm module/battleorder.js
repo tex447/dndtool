@@ -2,11 +2,9 @@ Template.Dashboard.onCreated(function() {
     Meteor.subscribe('battleorder');
     Meteor.subscribe('monstermanual');
 });
-var found = [];
-function findNext(){
-  var queryNext = {_id:{$nin:found}, name: {$exists: true}};
-  return Battleorder.findOne(queryNext);
-}
+
+function battleList() {
+};
 
 Template.battleorder.events({
 'submit form': function(event) {
@@ -22,13 +20,22 @@ Template.battleorder.events({
 },
 'click .addCombatRoundTracker'(event) {
   Meteor.call('addCombatRoundTracker');
+  var battleOrder = Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
+  Session.set("battleorder", battleOrder);
+  var charNumber = 0;
+  Session.set("characternumber", charNumber);
+
 },
 'click .killCombatTracker'(event) {
   Meteor.call('killCombatTracker', this._id);
 },
-'click .roundUp'(event) {
-  Meteor.call('roundUp', this._id);
-},
+// 'click .roundUp'(event) {
+//   Meteor.call('roundUp', this._id);
+//   var battleOrder = Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
+//   Session.set("battleorder", battleOrder);
+//   Session.set("characternumber", 0);
+//   console.log(battleOrder);
+
 'click .killNpc'(event) {
 Meteor.call('whoToKill', this._id);
 },
@@ -42,39 +49,32 @@ Meteor.call('whoToKill', this._id);
   var selectedMonster = this._id;
   Session.set("selectedMonster", selectedMonster);
 },
-'click .nextPlayer' : function() {
-var nextPlayer = findNext();
-if(nextPlayer){
-  found.push(nextPlayer._id);
+'click .nextPlayer'(event) {
+  var battleOrder1= Session.get("battleorder");
+  var orderLength= battleOrder1.length;
+  var charNumber = Session.get("characternumber")
+
+  if(charNumber < orderLength) {
+  var charNumber = Session.get("characternumber") + 1;
+Session.set("characternumber", charNumber);
+} else {
+  Meteor.call('roundUp', this._id);
+  var battleOrder = Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
+  Session.set("battleorder", battleOrder);
+  Session.set("characternumber", 0);
+  //build code to increment roud up by 1 and start it over
 }
-if(!nextPlayer){
-  found = [];
-  nextPlayer = findNext();
-  found.push(nextPlayer._id);
-}
-console.log(nextPlayer);
 },
 'click .submitFromMonsterManual'(event) {
 var monsterToAdd = Session.get("selectedMonster");
+var monster = Monstermanual.findOne({_id: monsterToAdd}, {fields: {_id: 0}});
 var npcName = Monstermanual.findOne({_id: monsterToAdd}, {fields: {name: 1}}).name;
-var npcHealth = Monstermanual.findOne({_id: monsterToAdd}, {fields: {health: 1}}).health;
-var npcArmorClass = Monstermanual.findOne({_id: monsterToAdd}, {fields: {ac: 1}}).ac;
+// var npcArmorClass = Monstermanual.findOne({_id: monsterToAdd}, {fields: {ac: 1}}).ac;
 var monsterQuantity = document.getElementById('monsterQuantity').value;
-Meteor.call("addNpcToBattleOrder", npcName, npcHealth, npcArmorClass, monsterQuantity);
+Meteor.call("addMonsterToBattleOrder", monster, monsterQuantity, npcName);
 },
-// 'click .loadPc'(event) {
-// let characters = Characters.find({},{fields:{charactername:1}}).map(({charactername})=>charactername);
-// console.log(characters);
-// Meteor.call("loadPc", characters, function(error, result){
-//   if(error){
-//     console.log("error", error);
-//   }
-//   if(result){
-//   }
-// });
-// Bert.alert( 'Player Characters loaded Dungeon Master', 'success', 'growl-top-left' );
-// },
 });
+
 Template.battleorder.helpers({
 items: function() {
       return Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}});
@@ -86,9 +86,10 @@ monsterManualList() {
   return Monstermanual.find();
 },
 combatroundstats(){
-  var poop = Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
-  // console.log(poop);
-  return Battleorder.find({name: {$exists: true}}, {sort: {rank: -1}}).fetch();
+//Get the array, set it to a set/get
+var statsArray = Session.get("battleorder");
+var whichCharacter = Session.get("characternumber");
+return statsArray[whichCharacter];
 },
 });
 
